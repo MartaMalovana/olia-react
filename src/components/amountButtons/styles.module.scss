@@ -1,0 +1,33 @@
+@import "../../styles/variables.module.scss";
+
+.buttons_container {
+  display: flex;
+  width: fit-content;
+  margin: 0;
+  padding: 5px 0;
+  font-size: 12px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border-radius: 20px;
+  //   border: 1px solid black;
+
+  button {
+    margin: 0 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    font-size: 20px;
+    border-color: transparent;
+    background-color: $color-decor-3;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  span {
+    display: block;
+    font-size: 16px;
+  }
+}
