@@ -58,7 +58,7 @@ export default function Basket({ changeBasketAmount }: Props) {
                   alt="bottle with oil"
                 />
                 <div>
-                  <p>{product.name}</p>
+                  <p className={styles.product_name}>{product.name}</p>
                   <p>{size + "мл | " + price(product.size, size) + "грн"}</p>
                   <AmountButtons
                     amount={amount}
@@ -66,9 +66,10 @@ export default function Basket({ changeBasketAmount }: Props) {
                     plus={() => changeBasketAmount(index, "plus")}
                   />
                   <p>
-                    {"Вартість: " +
-                      amount * Number(price(product.size, size)) +
-                      " грн"}
+                    Вартість:{" "}
+                    <span className={styles.product_amount}>
+                      {amount * Number(price(product.size, size))} грн
+                    </span>
                   </p>
                 </div>
                 <button

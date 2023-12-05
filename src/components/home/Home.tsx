@@ -4,10 +4,10 @@ import styles from "../../styles/styles.module.scss";
 import Header from "../header/Header";
 import Slider from "../slider/Slider";
 import Footer from "../footer/Footer";
-import oil from "../../icons/oil.svg";
-import flour from "../../icons/flour.svg";
-import zhmuh from "../../icons/zhmuh.svg";
-import present from "../../icons/present.svg";
+import oil from "../../icons/oil-black.svg";
+import flour from "../../icons/flour-black.svg";
+import zhmuh from "../../icons/zhmuh-black.svg";
+import present from "../../icons/present-black.svg";
 // import { caveat } from "./styles/fonts.js";
 
 export default function Home() {

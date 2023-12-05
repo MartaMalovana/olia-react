@@ -8,9 +8,9 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.footer_container}>
-        <div className={styles.footer_drop}>
+        <Link to="olia" className={styles.footer_drop}>
           <img src={drop} width={30} height={30} alt="oil drop decor"></img>
-        </div>
+        </Link>
         <div className={styles.footer_contacts}>
           <div className={styles.social_container}>
             <img

@@ -39,6 +39,15 @@
     text-align: start;
   }
 
+  .product_name {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .product_amount {
+    font-weight: bold;
+  }
+
   .amount_change {
     display: flex;
   }
@@ -48,7 +57,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-left: auto;
+    margin: auto 0 0 auto;
     background-color: transparent;
     border: 1px solid transparent;
     height: fit-content;
@@ -90,10 +99,9 @@
   margin-bottom: 30px;
   padding: 10px 30px;
   border: 1px solid transparent;
-  background-image: linear-gradient(
-    to bottom,
-    $color-active,
-    $color-active-2,
-    $color-active
-  );
+  border-radius: 15px;
+  color: $color-decor-3;
+  background-color: #0d0d0dc9;
+  text-transform: uppercase;
+  font-weight: bold;
 }
