@@ -47,50 +47,54 @@ export default function Basket({ changeBasketAmount }: Props) {
   return (
     <div className={styles.container}>
       <Header />
-      <div style={{ marginBottom: "auto" }}>
-        <ul className={styles.basketList}>
-          {basketData &&
-            basketData.map(({ product, size, amount }, index) => (
-              <li key={index} className={styles.basket_item}>
-                <img
-                  src={`/images/product-photos/${product.photo}`}
-                  className={styles.basket_image}
-                  alt="bottle with oil"
-                />
-                <div>
-                  <p className={styles.product_name}>{product.name}</p>
-                  <p>{size + "мл | " + price(product.size, size) + "грн"}</p>
-                  <AmountButtons
-                    amount={amount}
-                    minus={() => changeBasketAmount(index, "minus")}
-                    plus={() => changeBasketAmount(index, "plus")}
+      {basketData?.length !== 0 ? (
+        <div style={{ marginBottom: "auto" }}>
+          <ul className={styles.basketList}>
+            {basketData &&
+              basketData.map(({ product, size, amount }, index) => (
+                <li key={index} className={styles.basket_item}>
+                  <img
+                    src={`/images/product-photos/${product.photo}`}
+                    className={styles.basket_image}
+                    alt="bottle with oil"
                   />
-                  <p>
-                    Вартість:{" "}
-                    <span className={styles.product_amount}>
-                      {amount * Number(price(product.size, size))} грн
-                    </span>
-                  </p>
-                </div>
-                <button
-                  className={styles.delete_item}
-                  onClick={() => changeBasketAmount(index, "delete")}
-                >
-                  <div className={styles.delete_icon}></div>
-                  <p className={styles.delete_text}>Видалити</p>
-                </button>
-              </li>
-            ))}
-        </ul>
-        <p className={styles.total_price}>
-          Загальна вартість замовлення:{" "}
-          <span>
-            {totalPrice()}
-            {" грн"}
-          </span>
-        </p>
-        <button className={styles.order_button}>Замовити</button>
-      </div>
+                  <div>
+                    <p className={styles.product_name}>{product.name}</p>
+                    <p>{size + "мл | " + price(product.size, size) + "грн"}</p>
+                    <AmountButtons
+                      amount={amount}
+                      minus={() => changeBasketAmount(index, "minus")}
+                      plus={() => changeBasketAmount(index, "plus")}
+                    />
+                    <p>
+                      Вартість:{" "}
+                      <span className={styles.product_amount}>
+                        {amount * Number(price(product.size, size))} грн
+                      </span>
+                    </p>
+                  </div>
+                  <button
+                    className={styles.delete_item}
+                    onClick={() => changeBasketAmount(index, "delete")}
+                  >
+                    <div className={styles.delete_icon}></div>
+                    <p className={styles.delete_text}>Видалити</p>
+                  </button>
+                </li>
+              ))}
+          </ul>
+          <p className={styles.total_price}>
+            Загальна вартість замовлення:{" "}
+            <span>
+              {totalPrice()}
+              {" грн"}
+            </span>
+          </p>
+          <button className={styles.order_button}>Замовити</button>
+        </div>
+      ) : (
+        <p className={styles.empty_basket}>Кошик порожній</p>
+      )}
       <Footer />
     </div>
   );
