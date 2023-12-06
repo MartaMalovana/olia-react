@@ -1,9 +1,11 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { BasketData } from "../../App";
 import styles from "./styles.module.scss";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
 import AmountButtons from "../amountButtons/AmountButtons";
+import DeleteFromBasket from "../deleteFromBasket/DeleteFromBasket";
+import { Link } from "react-router-dom";
 
 type Props = {
   changeBasketAmount: (itemId: number, operation: string) => void;
@@ -17,10 +19,16 @@ type ProductItem = {
   photo: string;
 };
 type Item = { product: ProductItem; size: string; amount: number };
+type DeleteInfo = { index: number; operation: string };
 
 export default function Basket({ changeBasketAmount }: Props) {
   const basketData = useContext<Item[]>(BasketData);
   console.log(basketData);
+  const [showDelete, setShowDelete] = useState(false);
+  const [deleteData, setDeleteData] = useState<DeleteInfo>({
+    index: 0,
+    operation: "delete",
+  });
 
   const totalPrice: () => number = () => {
     return basketData.reduce(
@@ -44,6 +52,15 @@ export default function Basket({ changeBasketAmount }: Props) {
     const result = arr.find((el) => el[0] === size);
     if (result) return result[1];
   };
+
+  const deleteProduct: (index: number) => void = (index) => {
+    setDeleteData((data) => {
+      data.index = index;
+      return data;
+    });
+    setShowDelete(true);
+  };
+
   return (
     <div className={styles.container}>
       <Header />
@@ -75,7 +92,7 @@ export default function Basket({ changeBasketAmount }: Props) {
                   </div>
                   <button
                     className={styles.delete_item}
-                    onClick={() => changeBasketAmount(index, "delete")}
+                    onClick={() => deleteProduct(index)}
                   >
                     <div className={styles.delete_icon}></div>
                     <p className={styles.delete_text}>Видалити</p>
@@ -90,12 +107,23 @@ export default function Basket({ changeBasketAmount }: Props) {
               {" грн"}
             </span>
           </p>
+          <Link to="/olia" className={styles.continue_shopping}>
+            Продовжити знайомство з продукцією
+          </Link>
           <button className={styles.order_button}>Замовити</button>
         </div>
       ) : (
         <p className={styles.empty_basket}>Кошик порожній</p>
       )}
       <Footer />
+
+      {showDelete && (
+        <DeleteFromBasket
+          action={changeBasketAmount}
+          data={deleteData}
+          showModal={() => setShowDelete(false)}
+        />
+      )}
     </div>
   );
 }
