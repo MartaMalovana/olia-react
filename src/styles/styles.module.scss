@@ -156,11 +156,11 @@
   height: 128px;
   margin-bottom: 20px;
   padding: 20px 10px 10px;
-  background-color: $color-olive;
+  // background-color: $color-olive;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  border-radius: 10px;
-  border-top-right-radius: 30px;
-  border-bottom-left-radius: 30px;
+  // border-radius: 10px;
+  // border-top-right-radius: 30px;
+  // border-bottom-left-radius: 30px;
 
   &:hover,
   &:focus {
@@ -183,7 +183,8 @@
 
 .footer {
   margin-top: 20px;
-  background-color: $color-olive;
+  // background-color: $color-olive;
+  border-top: 1px solid $color-grey;
 }
 
 .footer_container {
@@ -209,7 +210,7 @@
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background-color: $color-background;
-  border: 1px solid $color-olive;
+  border: 1px solid $color-grey;
 
   &:hover {
     background-color: $color-active-2;
