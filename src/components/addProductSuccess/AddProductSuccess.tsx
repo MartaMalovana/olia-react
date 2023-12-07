@@ -8,7 +8,7 @@ export default function AddProductSuccess({ close }: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.text_container}>
-        <p>Продукт додано у корзину</p>
+        <p>Продукт додано до кошика</p>
         <button onClick={() => close()} className={styles.button} type="button">
           <span className={styles.text}>Добре</span>
         </button>

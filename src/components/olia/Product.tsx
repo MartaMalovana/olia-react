@@ -1,8 +1,8 @@
 import { useState, FormEvent } from "react";
 import styles from "./styles.module.scss";
 import arrowOpen from "../../icons/arrow-open.svg";
-import bottle from "../../icons/bottle.svg";
 import AmountButtons from "../amountButtons/AmountButtons";
+import Size from "./Size";
 
 type ProductItem = {
   id: number;
@@ -19,6 +19,8 @@ type Props = {
   addItem: (item: Item) => void;
   success: () => void;
   errorMessage: () => void;
+  handleCheckedList: (id: number, size: string) => void;
+  checkedList: { id: number; sizeChecked: string }[] | [];
 };
 
 export default function Product({
@@ -26,13 +28,14 @@ export default function Product({
   addItem,
   success,
   errorMessage,
+  handleCheckedList,
+  checkedList,
 }: Props) {
   const [showInfo, setShowInfo] = useState(false);
   const [amount, setAmount] = useState(1);
 
   const addProduct = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(event);
     try {
       const target = event.target as HTMLFormElement;
       let size: string = [...(Object as any).values(target)].find(
@@ -107,38 +110,12 @@ export default function Product({
             <form className={styles.form} onSubmit={addProduct}>
               {/* Product sizes option*/}
               <div className={styles.sizes_container}>
-                {product.size.map(([size, price], index) => (
-                  <>
-                    <input
-                      type="radio"
-                      name="bottle-size"
-                      id={`${index}`}
-                      value={size}
-                      className={styles.size_input}
-                      defaultChecked={index === 0 ? true : false}
-                    ></input>
-                    <label
-                      className={styles.sizes_item}
-                      key={size}
-                      htmlFor={`${index}`}
-                    >
-                      <div className={styles.size_button}>
-                        <img
-                          className={styles.bottle}
-                          src={bottle}
-                          width={30 + index * 7}
-                          alt="bottle icon"
-                        />
-                      </div>
-                      <p className={styles.size_text}>
-                        {size} <span>мл</span>
-                      </p>
-                      <p>
-                        {price} <span>грн</span>
-                      </p>
-                    </label>
-                  </>
-                ))}
+                <Size
+                  product={product.size}
+                  idProduct={product.id}
+                  handleCheckedList={handleCheckedList}
+                  checkedList={checkedList}
+                />
               </div>
               {/* Product amount option (buttons to change amount)*/}
               <label>

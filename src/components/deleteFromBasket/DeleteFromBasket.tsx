@@ -10,7 +10,7 @@ export default function DeleteFromBasket({ action, data, showModal }: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.text_container}>
-        <p>Видалити цей продукт з корзини?</p>
+        <p>Видалити цей продукт з кошика?</p>
         <button
           onClick={() => {
             action(data.index, data.operation);

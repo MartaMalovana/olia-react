@@ -11,6 +11,28 @@ import AddProductError from "../addProductError/AddProductError";
 export default function Olia({ addItem }: { addItem: any }) {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const [checkedList, setCheckedList] = useState<
+    { id: number; sizeChecked: string }[] | []
+  >([]);
+
+  const handleCheckedList: (id: number, size: string) => void = (id, size) => {
+    setCheckedList((data) => {
+      console.log(data);
+      let newData = JSON.parse(JSON.stringify(data));
+      if (newData.lenght === 0) return;
+      let item = newData.find(
+        (el: { id: number; sizeChecked: string }) => el.id === id
+      );
+      if (!item) {
+        newData.push({ id: id, sizeChecked: size });
+      } else {
+        item.sizeChecked = size;
+      }
+      console.log(newData);
+
+      return newData;
+    });
+  };
 
   return (
     <div className={styles.products}>
@@ -27,6 +49,8 @@ export default function Olia({ addItem }: { addItem: any }) {
               addItem={addItem}
               success={() => setSuccess(true)}
               errorMessage={() => setError(true)}
+              handleCheckedList={handleCheckedList}
+              checkedList={checkedList}
             />
           ))}
         </ul>

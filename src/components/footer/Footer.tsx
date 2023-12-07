@@ -13,25 +13,37 @@ export default function Footer() {
         </Link>
         <div className={styles.footer_contacts}>
           <div className={styles.social_container}>
-            <img
-              src={facebook}
-              width={27}
-              height={27}
-              className={styles.facebook}
-              alt="facebook icon"
-            />
-            <img
-              src={instagram}
-              width={30}
-              height={30}
-              className={styles.instagram}
-              alt="instagram icon"
-            />
+            <a
+              href="https://www.facebook.com/profile.php?id=61552696846756"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={facebook}
+                width={27}
+                height={27}
+                className={styles.facebook}
+                alt="facebook icon"
+              />
+            </a>
+            <a
+              href="https://instagram.com/matolli_oil?igshid=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={instagram}
+                width={30}
+                height={30}
+                className={styles.instagram}
+                alt="instagram icon"
+              />
+            </a>
           </div>
           <a href="mailto:marta.malovana@gmail.com?subject='olia'&body='hello martas">
             olia@gmail.com
           </a>
-          <a href="tel:+380670676756">+380670676756</a>
+          <a href="tel:+380985583388">+380985583388</a>
         </div>
         <div className={styles.footer_links}>
           <Link to="/kontaktu">Про нас</Link>
