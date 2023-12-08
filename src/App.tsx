@@ -1,14 +1,19 @@
 import { Routes, Route } from "react-router-dom";
-import { useState, createContext } from "react";
+import { useState, createContext, Suspense, lazy } from "react";
 import "./App.css";
-import Home from "./components/home/Home";
-import Olia from "./components/olia/Olia";
-import Boroshno from "./components/boroshno/Boroshno";
-import Dostavka from "./components/dostavka-oplata/Dostavka";
-import Podarynkovi from "./components/podarynkovi-naboru/Podarynkovi";
-import Zhmuh from "./components/zhmuh/Zhmuh";
-import Kontaktu from "./components/kontaktu/Kontaktu";
-import Basket from "./components/basket/Basket";
+import { PropagateLoader } from "react-spinners";
+import { Circles } from "react-loader-spinner";
+
+const Home = lazy(() => import("./components/home/Home"));
+const Olia = lazy(() => import("./components/olia/Olia"));
+const Boroshno = lazy(() => import("./components/boroshno/Boroshno"));
+const Dostavka = lazy(() => import("./components/dostavka-oplata/Dostavka"));
+const Podarynkovi = lazy(
+  () => import("./components/podarynkovi-naboru/Podarynkovi")
+);
+const Zhmuh = lazy(() => import("./components/zhmuh/Zhmuh"));
+const Kontaktu = lazy(() => import("./components/kontaktu/Kontaktu"));
+const Basket = lazy(() => import("./components/basket/Basket"));
 
 type ProductItem = {
   id: number;
@@ -54,16 +59,163 @@ export function App() {
     <BasketData.Provider value={basket}>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/olia" element={<Olia addItem={addItem} />}></Route>
-          <Route path="/boroshno" element={<Boroshno />}></Route>
-          <Route path="/dostavka-oplata" element={<Dostavka />}></Route>
-          <Route path="/podarynkovi-naboru" element={<Podarynkovi />}></Route>
-          <Route path="/zhmuh" element={<Zhmuh />}></Route>
-          <Route path="/kontaktu" element={<Kontaktu />}></Route>
+          <Route
+            path="/"
+            element={
+              <Suspense
+                fallback={
+                  <Circles
+                    height="50"
+                    width="50"
+                    color="black"
+                    ariaLabel="circles-loading"
+                    wrapperStyle={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      height: "100vh",
+                    }}
+                    wrapperClass="loader"
+                    visible={true}
+                  />
+                }
+              >
+                <Home />
+              </Suspense>
+            }
+          ></Route>
+          <Route
+            path="/olia"
+            element={
+              <Suspense
+                fallback={
+                  <Circles
+                    height="50"
+                    width="50"
+                    color="black"
+                    ariaLabel="circles-loading"
+                    wrapperClass="loader"
+                    visible={true}
+                  />
+                }
+              >
+                <Olia addItem={addItem} />
+              </Suspense>
+            }
+          ></Route>
+          <Route
+            path="/boroshno"
+            element={
+              <Suspense
+                fallback={
+                  <Circles
+                    height="50"
+                    width="50"
+                    color="black"
+                    ariaLabel="circles-loading"
+                    wrapperClass="loader"
+                    visible={true}
+                  />
+                }
+              >
+                <Boroshno />
+              </Suspense>
+            }
+          ></Route>
+          <Route
+            path="/dostavka-oplata"
+            element={
+              <Suspense
+                fallback={
+                  <Circles
+                    height="50"
+                    width="50"
+                    color="black"
+                    ariaLabel="circles-loading"
+                    wrapperClass="loader"
+                    visible={true}
+                  />
+                }
+              >
+                <Dostavka />
+              </Suspense>
+            }
+          ></Route>
+          <Route
+            path="/podarynkovi-naboru"
+            element={
+              <Suspense
+                fallback={
+                  <Circles
+                    height="50"
+                    width="50"
+                    color="black"
+                    ariaLabel="circles-loading"
+                    wrapperClass="loader"
+                    visible={true}
+                  />
+                }
+              >
+                <Podarynkovi />
+              </Suspense>
+            }
+          ></Route>
+          <Route
+            path="/zhmuh"
+            element={
+              <Suspense
+                fallback={
+                  <Circles
+                    height="50"
+                    width="50"
+                    color="black"
+                    ariaLabel="circles-loading"
+                    wrapperClass="loader"
+                    visible={true}
+                  />
+                }
+              >
+                <Zhmuh />
+              </Suspense>
+            }
+          ></Route>
+          <Route
+            path="/kontaktu"
+            element={
+              <Suspense
+                fallback={
+                  <Circles
+                    height="50"
+                    width="50"
+                    color="black"
+                    ariaLabel="circles-loading"
+                    wrapperClass="loader"
+                    visible={true}
+                  />
+                }
+              >
+                <Kontaktu />
+              </Suspense>
+            }
+          ></Route>
           <Route
             path="/basket"
-            element={<Basket changeBasketAmount={changeBasketAmount} />}
+            element={
+              <Suspense
+                fallback={
+                  <Circles
+                    height="50"
+                    width="50"
+                    color="black"
+                    ariaLabel="circles-loading"
+                    wrapperClass="loader"
+                    visible={true}
+                  />
+                }
+              >
+                <Basket changeBasketAmount={changeBasketAmount} />
+              </Suspense>
+            }
           ></Route>
         </Routes>
       </div>
