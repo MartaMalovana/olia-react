@@ -1,5 +1,5 @@
 import Spin from "hamburger-react";
-import { useState, useContext, forwardRef, useRef } from "react";
+import { useState, useContext, forwardRef } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
 import basket from "../../icons/basket-2.svg";

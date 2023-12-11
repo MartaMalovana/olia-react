@@ -35,7 +35,7 @@ export const BasketData = createContext<Item[]>([]);
 // APP COMPONENT
 export function App() {
   const [basket, setBasket] = useState<Item[]>([]);
-  const { ref, inView, entry } = useInView();
+  const { ref, inView } = useInView();
   const handleScroll = () => {
     window.scroll({
       top: 0,

@@ -1,4 +1,3 @@
-import { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
 import olia from "../../icons/oil-black.svg";
