@@ -1,7 +1,7 @@
 import Spin from "hamburger-react";
-import { useState, useContext } from "react";
+import { useState, useContext, forwardRef, useRef } from "react";
 import { Link } from "react-router-dom";
-import styles from "../../styles/styles.module.scss";
+import styles from "./styles.module.scss";
 import basket from "../../icons/basket-2.svg";
 import Menu from "../menu/Menu";
 import { BasketData } from "../../App";
@@ -17,16 +17,22 @@ type ProductItem = {
 };
 type Item = { product: ProductItem; size: string; amount: number };
 
-export default function Header() {
+const Header = forwardRef(({}, ref: any) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false);
   const basketData = useContext<Item[]>(BasketData);
   let productAmount = basketData.reduce(
     (acc, { amount }) => (acc += amount),
     0
   );
 
+  const closeMenu = () => {
+    setMenuOpen(!menuOpen);
+    setOpen(false);
+  };
+
   return (
-    <header className={styles.header}>
+    <header className={styles.header} ref={ref}>
       <div className={styles.header_container}>
         {/* Emblem */}
         <Link to={"/"} className={styles.emblem}>
@@ -49,11 +55,13 @@ export default function Header() {
         </Link>
         {/* Button to open Menu */}
         <div onClick={() => setMenuOpen(!menuOpen)}>
-          <Spin size={24}></Spin>
+          <Spin size={24} toggled={isOpen} toggle={setOpen}></Spin>
         </div>
       </div>
       {/* Menu */}
-      {menuOpen && <Menu />}
+      {menuOpen && <Menu close={closeMenu} />}
     </header>
   );
-}
+});
+
+export default Header;

@@ -1,5 +1,6 @@
+import { forwardRef } from "react";
 import { Link } from "react-router-dom";
-import styles from "../../styles/styles.module.scss";
+import styles from "./styles.module.scss";
 import olia from "../../icons/oil-black.svg";
 import flour from "../../icons/flour-black.svg";
 import zhmuh from "../../icons/zhmuh-black.svg";
@@ -8,9 +9,11 @@ import main from "../../icons/main.svg";
 import dostavka from "../../icons/dostavka.svg";
 import komanda from "../../icons/komanda.svg";
 
-export default function Menu() {
+type Props = { close: () => void };
+
+export default function Menu({ close }: Props) {
   return (
-    <nav className={styles.navigation}>
+    <nav className={styles.navigation} onClick={() => close()}>
       <ul>
         <li>
           <Link to="/">
@@ -20,7 +23,9 @@ export default function Menu() {
                 width={17}
                 height={20}
                 alt="icon oil"
-                style={{ marginRight: "15px" }}
+                style={{
+                  marginRight: "15px",
+                }}
               />
               Головна
             </div>

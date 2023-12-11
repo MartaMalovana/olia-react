@@ -1,20 +1,14 @@
 import { Link } from "react-router-dom";
-import "../../App.css";
-import styles from "../../styles/styles.module.scss";
-import Header from "../header/Header";
+import styles from "./styles.module.scss";
 import Slider from "../slider/Slider";
-import Footer from "../footer/Footer";
 import oil from "../../icons/oil-black.svg";
 import flour from "../../icons/flour-black.svg";
 import zhmuh from "../../icons/zhmuh-black.svg";
 import present from "../../icons/present-black.svg";
-// import { caveat } from "./styles/fonts.js";
 
 export default function Home() {
   return (
     <>
-      <Header />
-
       <main className={styles.main_container}>
         {/* Drop and welcome text */}
         <div className={styles.drop}>
@@ -29,7 +23,10 @@ export default function Home() {
         <Slider />
 
         {/* Product sections */}
-        <div className={styles.section_list}>
+        <div
+          className={styles.section_list}
+          onClick={() => window.scroll(0, 0)}
+        >
           <Link to="olia" className={styles.section}>
             <img
               src={oil}
@@ -68,8 +65,6 @@ export default function Home() {
           </Link>
         </div>
       </main>
-
-      <Footer />
     </>
   );
 }

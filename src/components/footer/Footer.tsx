@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styles from "../../styles/styles.module.scss";
+import styles from "./styles.module.scss";
 import drop from "../../icons/drop.png";
 import instagram from "../../icons/instagram.svg";
 import facebook from "../../icons/facebook.svg";
@@ -8,7 +8,11 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.footer_container}>
-        <Link to="/olia" className={styles.footer_drop}>
+        <Link
+          to="/olia"
+          className={styles.footer_drop}
+          onClick={() => window.scroll({ top: 0, left: 0, behavior: "smooth" })}
+        >
           <img src={drop} width={30} height={30} alt="oil drop decor"></img>
         </Link>
         <div className={styles.footer_contacts}>

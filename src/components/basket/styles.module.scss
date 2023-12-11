@@ -1,7 +1,6 @@
 @import "../../styles/variables.module.scss";
 
 .container {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -115,4 +114,6 @@
 
 .empty_basket {
   font-size: 20px;
+  text-align: center;
+  margin-top: 50px;
 }

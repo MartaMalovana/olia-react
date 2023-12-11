@@ -1,0 +1,60 @@
+@import "../../styles/variables.module.scss";
+
+.header {
+  position: relative;
+  margin-bottom: 20px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.header_container {
+  margin: 0 auto;
+  padding: 5px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  // @media screen and (min-width: 765px) {
+  //   width: $width-tablet;
+  // }
+
+  @media screen and (min-width: 1190px) {
+    max-width: $width-desktop;
+  }
+}
+
+.emblem {
+  position: absolute;
+  // margin-left: 10px;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: $color-background;
+  z-index: 99999;
+}
+
+.basket {
+  position: relative;
+  margin-left: auto;
+  margin-right: 5px;
+
+  button {
+    border-color: transparent;
+    background-color: transparent;
+  }
+}
+
+.product_amount {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-olive;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+}

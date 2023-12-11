@@ -1,4 +1,4 @@
-import styles from "../../styles/styles.module.scss";
+import styles from "./styles.module.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 

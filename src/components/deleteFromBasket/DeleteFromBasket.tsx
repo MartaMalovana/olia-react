@@ -26,7 +26,7 @@ export default function DeleteFromBasket({ action, data, showModal }: Props) {
           className={styles.button}
           type="button"
         >
-          <span className={styles.text}>Ой ні, не видаляти</span>
+          <span className={styles.text}>Ні, не видаляти</span>
         </button>
       </div>
     </div>

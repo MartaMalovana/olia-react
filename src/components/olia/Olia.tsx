@@ -1,12 +1,9 @@
 "use client";
 import { useState } from "react";
-import Header from "../header/Header";
-import Footer from "../footer/Footer";
 import Product from "./Product";
 import styles from "./styles.module.scss";
 import data from "./olia.json";
-import AddProductSuccess from "../addProductSuccess/AddProductSuccess";
-import AddProductError from "../addProductError/AddProductError";
+import AddProductMessage from "../addProductMessage/AddProductMessage";
 
 export default function Olia({ addItem }: { addItem: any }) {
   const [success, setSuccess] = useState(false);
@@ -36,8 +33,6 @@ export default function Olia({ addItem }: { addItem: any }) {
 
   return (
     <div className={styles.products}>
-      <Header />
-
       <main className={styles.main}>
         {/* Product list */}
         <ul className={styles.product_list}>
@@ -56,11 +51,13 @@ export default function Olia({ addItem }: { addItem: any }) {
         </ul>
       </main>
 
-      <Footer />
-
-      {/* Modal "adding product to basket, status success" */}
-      {success && <AddProductSuccess close={() => setSuccess(false)} />}
-      {error && <AddProductError close={() => setError(false)} />}
+      {/* Modal "adding product to basket, status success or error" */}
+      {success && (
+        <AddProductMessage close={() => setSuccess(false)} type="success" />
+      )}
+      {error && (
+        <AddProductMessage close={() => setError(false)} type="error" />
+      )}
     </div>
   );
 }

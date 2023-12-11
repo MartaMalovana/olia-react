@@ -1,8 +1,6 @@
 import { useState, useContext } from "react";
 import { BasketData } from "../../App";
 import styles from "./styles.module.scss";
-import Header from "../header/Header";
-import Footer from "../footer/Footer";
 import AmountButtons from "../amountButtons/AmountButtons";
 import DeleteFromBasket from "../deleteFromBasket/DeleteFromBasket";
 import { Link } from "react-router-dom";
@@ -63,7 +61,6 @@ export default function Basket({ changeBasketAmount }: Props) {
 
   return (
     <div className={styles.container}>
-      <Header />
       {basketData?.length !== 0 ? (
         <div style={{ marginBottom: "auto" }}>
           <ul className={styles.basketList}>
@@ -115,7 +112,6 @@ export default function Basket({ changeBasketAmount }: Props) {
       ) : (
         <p className={styles.empty_basket}>Кошик порожній</p>
       )}
-      <Footer />
 
       {showDelete && (
         <DeleteFromBasket
