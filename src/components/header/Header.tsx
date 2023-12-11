@@ -17,7 +17,7 @@ type ProductItem = {
 };
 type Item = { product: ProductItem; size: string; amount: number };
 
-const Header = forwardRef(({}, ref: any) => {
+const Header = forwardRef(({}: any | {}, ref: any) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isOpen, setOpen] = useState(false);
   const basketData = useContext<Item[]>(BasketData);
