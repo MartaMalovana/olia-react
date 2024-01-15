@@ -75,23 +75,22 @@ export default function Product({
         <img
           className={styles.icon}
           src={`/images/product-icons/${product.icon}`}
-          width={70}
           alt="product icon"
         />
         {/* Product name */}
         <p className={styles.product_name}>{product.name}</p>
         {/* Arrow down to open the product info */}
-        <img
+        <div
           className={
             showInfo
               ? `${styles.arrow_open} ${styles.arrow_open_active}`
               : styles.arrow_open
           }
-          src={arrowOpen}
-          width={35}
-          height={35}
-          alt="arrow down"
-        />
+          // src={arrowOpen}
+          // width={35}
+          // height={35}
+          // alt="arrow down"
+        ></div>
       </div>
 
       {/* Product info (photo, description and the form to add product to basket) */}

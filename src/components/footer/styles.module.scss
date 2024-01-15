@@ -3,7 +3,7 @@
 .footer {
   margin-top: auto;
   // background-color: $color-olive;
-  border-top: 1px solid $color-grey;
+  // border-top: 1px solid $color-grey;
 }
 
 .footer_container {
@@ -32,7 +32,7 @@
   border: 1px solid $color-grey;
 
   &:hover {
-    background-color: $color-active-2;
+    background-color: grey;
   }
 }
 

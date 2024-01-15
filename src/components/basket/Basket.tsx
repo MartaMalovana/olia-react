@@ -62,7 +62,7 @@ export default function Basket({ changeBasketAmount }: Props) {
   return (
     <div className={styles.container}>
       {basketData?.length !== 0 ? (
-        <div style={{ marginBottom: "auto" }}>
+        <div style={{ margin: "20px 20px auto" }}>
           <ul className={styles.basketList}>
             {basketData &&
               basketData.map(({ product, size, amount }, index) => (

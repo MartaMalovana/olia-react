@@ -1,13 +1,15 @@
 "use client";
 import styles from "./styles.module.scss";
+import uc from "../../icons/underconstruction.jpg";
 
 export default function Kontaktu() {
   return (
     <div className={styles.container}>
-      <p style={{ textAlign: "center" }}>
-        Упс... Над цією сторіночкою я ще працюю!{" "}
-      </p>
-      <p style={{ textAlign: "center" }}>Тут буде ІНФО ПРО НАС</p>
+      <img
+        src={uc}
+        style={{ width: "300px", borderRadius: "20px", marginTop: "30px" }}
+        alt="сторінка знаходиться у розробці"
+      />
     </div>
   );
 }

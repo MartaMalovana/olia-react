@@ -15,7 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin: 30px 15px 10px;
+  margin: 20px 15px 10px;
   font-size: 12px;
   color: $color-text-1;
   // background-image: url("../icons/leaves.svg");
@@ -70,6 +70,7 @@
   flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .section {
@@ -78,14 +79,14 @@
   align-items: center;
   justify-content: space-around;
   flex-basis: calc((100% - 60px) / 2);
-  height: 128px;
+  // height: 128px;
   margin-bottom: 20px;
-  padding: 20px 10px 10px;
+  padding: 15px;
   // background-color: $color-olive;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  // border-radius: 10px;
-  // border-top-right-radius: 30px;
-  // border-bottom-left-radius: 30px;
+  border-radius: 0px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
 
   &:hover,
   &:focus {
@@ -97,6 +98,12 @@
   }
 
   @media screen and (min-width: 1190px) {
+  }
+
+  img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 5px;
   }
 }
 
