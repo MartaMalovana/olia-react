@@ -1,6 +1,6 @@
 import { useState, FormEvent } from "react";
 import styles from "./styles.module.scss";
-import arrowOpen from "../../icons/arrow-open.svg";
+// import arrowOpen from "../../icons/arrow-open.svg";
 import AmountButtons from "../amountButtons/AmountButtons";
 import Size from "./Size";
 
