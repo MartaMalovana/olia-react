@@ -18,8 +18,10 @@ export default function SuspenseComponent({ children }: Props) {
           wrapperStyle={{
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",
+            alignItems: "flex-start",
+            width: "100%",
             height: "100vh",
+            paddingTop: "100px",
           }}
           wrapperClass="loader"
           visible={true}

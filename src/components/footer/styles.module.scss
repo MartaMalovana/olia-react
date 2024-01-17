@@ -8,12 +8,21 @@
 
 .footer_container {
   position: relative;
+  display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  align-items: flex-end;
+  justify-content: space-between;
   color: black;
   padding: 15px 10px;
   margin: 0 auto;
+  background-color: $color-background;
+  font-size: 16px;
 
   @media screen and (min-width: 1190px) {
     max-width: $width-desktop;
+    font-size: 20px;
+    margin: 0 auto 20px;
   }
 }
 

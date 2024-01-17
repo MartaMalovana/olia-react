@@ -11,16 +11,38 @@
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
+
 }
 
 .button_up {
   position: fixed;
-  top: 5px;
+  bottom: 70px;
   right: 5px;
   width: 35px;
   height: 35px;
-  background: rgb(64, 63, 63) url("../icons//arrow-up.svg") no-repeat 50% 50%;
+  background: #ffcd50 url("../icons//arrow-up.svg") no-repeat 50% 50%;
   background-size: 25px 25px;
   color: #f2dbb7;
-  border: 1px solid transparent;
+  border: 1px solid black;
+}
+
+.main_container {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  /* background-color: $color-background; */
+
+}
+
+@media screen and (min-width: 1190px) {
+  .main_container {
+    max-width: 1200px;
+    margin: 30px auto;
+    /* padding-left: 400px; */
+    box-shadow: rgba(99, 99, 99, 0.2) -5px 8px 10px 0px;
+    border-bottom-left-radius: 40px;
+    display: flex;
+  }
+
 }

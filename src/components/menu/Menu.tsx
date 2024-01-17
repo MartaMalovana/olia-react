@@ -1,23 +1,30 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./styles.module.scss";
-import olia from "../../icons/oil-black.svg";
-import flour from "../../icons/flour-black.svg";
-import zhmuh from "../../icons/zhmuh-black.svg";
-import present from "../../icons/present-black.svg";
-import main from "../../icons/main.svg";
-import dostavka from "../../icons/dostavka.svg";
-import komanda from "../../icons/komanda.svg";
+// import olia from "../../icons/oil-black.svg";
+// import flour from "../../icons/flour-black.svg";
+// import zhmuh from "../../icons/zhmuh-black.svg";
+// import present from "../../icons/present-black.svg";
+// import main from "../../icons/main.svg";
+// import dostavka from "../../icons/dostavka.svg";
+// import komanda from "../../icons/komanda.svg";
+import active from "../../icons/leaves.svg";
 
 type Props = { close: () => void };
 
 export default function Menu({ close }: Props) {
+  const { pathname } = useLocation();
+  console.log(pathname);
+
   return (
     <nav className={styles.navigation} onClick={() => close()}>
       <ul>
         <li>
           <Link to="/">
             <div>
-              <img
+              {pathname === "/" && (
+                <img src={active} width={50} height={50} alt="icon leaves" />
+              )}
+              {/* <img
                 src={main}
                 width={17}
                 height={20}
@@ -25,7 +32,7 @@ export default function Menu({ close }: Props) {
                 style={{
                   marginRight: "15px",
                 }}
-              />
+              /> */}
               Головна
             </div>
           </Link>
@@ -33,69 +40,84 @@ export default function Menu({ close }: Props) {
         <li>
           <Link to="/olia">
             <div>
-              <img
+              {pathname === "/olia" && (
+                <img src={active} width={50} height={50} alt="icon leaves" />
+              )}
+              {/* <img
                 src={olia}
                 width={20}
                 height={20}
                 alt="icon oil"
                 style={{ marginRight: "15px" }}
-              />
-              Олія
+              /> */}
+              Олії
             </div>
           </Link>
         </li>
         <li>
           <Link to="/boroshno">
             <div>
-              <img
+              {pathname === "/boroshno" && (
+                <img src={active} width={50} height={50} alt="icon leaves" />
+              )}
+              {/* <img
                 src={flour}
                 width={20}
                 height={20}
                 alt="icon oil"
                 style={{ marginRight: "15px" }}
-              />
-              Борошно
+              /> */}
+              Знежирене борошно
             </div>
           </Link>
         </li>
         <li>
           <Link to="/zhmuh">
             <div>
-              <img
+              {pathname === "/zhmuh" && (
+                <img src={active} width={50} height={50} alt="icon leaves" />
+              )}
+              {/* <img
                 src={zhmuh}
                 width={20}
                 height={20}
                 alt="icon oil"
                 style={{ marginRight: "15px" }}
-              />
-              Жмих
+              /> */}
+              Знежирене насіння та горіхи
             </div>
           </Link>
         </li>
         <li>
           <Link to="/podarynkovi-naboru">
             <div>
-              <img
+              {pathname === "/podarynkovi-naboru" && (
+                <img src={active} width={50} height={50} alt="icon leaves" />
+              )}
+              {/* <img
                 src={present}
                 width={20}
                 height={20}
                 alt="icon oil"
                 style={{ marginRight: "15px" }}
-              />
-              Подарункові набори
+              /> */}
+              Набори
             </div>
           </Link>
         </li>
         <li>
           <Link to="/dostavka-oplata">
             <div>
-              <img
+              {pathname === "/dostavka-oplata" && (
+                <img src={active} width={50} height={50} alt="icon leaves" />
+              )}
+              {/* <img
                 src={dostavka}
                 width={20}
                 height={20}
                 alt="icon oil"
                 style={{ marginRight: "15px" }}
-              />
+              /> */}
               Доставка та оплата
             </div>
           </Link>
@@ -103,13 +125,16 @@ export default function Menu({ close }: Props) {
         <li>
           <Link to="/kontaktu">
             <div>
-              <img
+              {pathname === "/kontaktu" && (
+                <img src={active} width={50} height={50} alt="icon leaves" />
+              )}
+              {/* <img
                 src={komanda}
                 width={18}
                 height={20}
                 alt="icon oil"
                 style={{ marginRight: "15px" }}
-              />
+              /> */}
               Про нас
             </div>
           </Link>

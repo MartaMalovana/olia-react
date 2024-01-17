@@ -3,6 +3,8 @@ import { useState, createContext, lazy } from "react";
 import { useInView } from "react-intersection-observer";
 import "./styles/App.css";
 import SuspenseComponent from "./components/suspense/Suspense";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import Menu from "./components/menu/Menu";
 
 // LAZY IMPORTS
 const Header = lazy(() => import("./components/header/Header"));
@@ -72,72 +74,78 @@ export function App() {
     <BasketData.Provider value={basket}>
       <div className="App">
         <Header ref={ref} />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <SuspenseComponent>
-                <Home />
-              </SuspenseComponent>
-            }
-          ></Route>
-          <Route
-            path="/olia"
-            element={
-              <SuspenseComponent>
-                <Olia addItem={addItem} />
-              </SuspenseComponent>
-            }
-          ></Route>
-          <Route
-            path="/boroshno"
-            element={
-              <SuspenseComponent>
-                <Boroshno />
-              </SuspenseComponent>
-            }
-          ></Route>
-          <Route
-            path="/dostavka-oplata"
-            element={
-              <SuspenseComponent>
-                <Dostavka />
-              </SuspenseComponent>
-            }
-          ></Route>
-          <Route
-            path="/podarynkovi-naboru"
-            element={
-              <SuspenseComponent>
-                <Podarynkovi />
-              </SuspenseComponent>
-            }
-          ></Route>
-          <Route
-            path="/zhmuh"
-            element={
-              <SuspenseComponent>
-                <Zhmuh />
-              </SuspenseComponent>
-            }
-          ></Route>
-          <Route
-            path="/kontaktu"
-            element={
-              <SuspenseComponent>
-                <Kontaktu />
-              </SuspenseComponent>
-            }
-          ></Route>
-          <Route
-            path="/basket"
-            element={
-              <SuspenseComponent>
-                <Basket changeBasketAmount={changeBasketAmount} />
-              </SuspenseComponent>
-            }
-          ></Route>
-        </Routes>
+        <div className="main_container">
+          {useMediaQuery("(min-width:1000px)") && (
+            <Menu close={() => console.log("menu")} />
+          )}
+
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <SuspenseComponent>
+                  <Home />
+                </SuspenseComponent>
+              }
+            ></Route>
+            <Route
+              path="/olia"
+              element={
+                <SuspenseComponent>
+                  <Olia addItem={addItem} />
+                </SuspenseComponent>
+              }
+            ></Route>
+            <Route
+              path="/boroshno"
+              element={
+                <SuspenseComponent>
+                  <Boroshno />
+                </SuspenseComponent>
+              }
+            ></Route>
+            <Route
+              path="/dostavka-oplata"
+              element={
+                <SuspenseComponent>
+                  <Dostavka />
+                </SuspenseComponent>
+              }
+            ></Route>
+            <Route
+              path="/podarynkovi-naboru"
+              element={
+                <SuspenseComponent>
+                  <Podarynkovi />
+                </SuspenseComponent>
+              }
+            ></Route>
+            <Route
+              path="/zhmuh"
+              element={
+                <SuspenseComponent>
+                  <Zhmuh />
+                </SuspenseComponent>
+              }
+            ></Route>
+            <Route
+              path="/kontaktu"
+              element={
+                <SuspenseComponent>
+                  <Kontaktu />
+                </SuspenseComponent>
+              }
+            ></Route>
+            <Route
+              path="/basket"
+              element={
+                <SuspenseComponent>
+                  <Basket changeBasketAmount={changeBasketAmount} />
+                </SuspenseComponent>
+              }
+            ></Route>
+          </Routes>
+        </div>
         <Footer />
         {!inView && (
           <button className="button_up" onClick={handleScroll}></button>
