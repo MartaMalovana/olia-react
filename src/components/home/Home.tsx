@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import styles from "./styles.module.scss";
 import Slider from "../slider/Slider";
 // import oil from "../../icons/oil-black.svg";
@@ -9,19 +10,14 @@ import boroshno from "../../icons/boroshno.png";
 import nasinnya from "../../icons/nasinnya.png";
 // import present from "../../icons/present-black.svg";
 import naboru from "../../icons/naboru.png";
+import Slogan from "../slogan/Slogan";
 
 export default function Home() {
   return (
-    <>
+    <div className={styles.container}>
       <main className={styles.main_container}>
-        {/* Drop and welcome text */}
-        <div className={styles.drop}>
-          {/* <img src={drop} width={50} height={50} alt="Oil drop" /> */}
-          <p>
-            &quot;Виготовляємо олію під замовлення. Тому вона завжди свіжа та
-            преміум якості!&quot;
-          </p>
-        </div>
+        {/* Slogan */}
+        {useMediaQuery("(max-width:1000px)") && <Slogan />}
 
         {/* Slider */}
         <Slider />
@@ -49,6 +45,6 @@ export default function Home() {
           </Link>
         </div>
       </main>
-    </>
+    </div>
   );
 }

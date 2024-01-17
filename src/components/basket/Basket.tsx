@@ -107,7 +107,7 @@ export default function Basket({ changeBasketAmount }: Props) {
           <Link to="/olia" className={styles.continue_shopping}>
             Продовжити знайомство з продукцією
           </Link>
-          <button className={styles.order_button}>Замовити</button>
+          <button className={styles.order_button}>Оформити замовлення</button>
         </div>
       ) : (
         <p className={styles.empty_basket}>Кошик порожній</p>
