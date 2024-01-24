@@ -83,14 +83,14 @@ export default function ModalOrder({
     validationSchema: Yup.object({
       lastName: Yup.string()
         .max(20, "Не більше 20 літер")
-        .matches(/(^([a-zA-Zа-яА-Яь\-]+ {0,})+$)/, "Лише літери")
+        .matches(/(^([a-zA-Zа-яА-Яь-]+ {0,})+$)/, "Лише літери")
         .required("Це поле необхідно заповнити"),
       firstName: Yup.string()
         .max(20, "Не більше 20 літер")
-        .matches(/(^([a-zA-Zа-яА-Яь\-]+ {0,})+$)/, "Лише літери")
+        .matches(/(^([a-zA-Zа-яА-Яь-]+ {0,})+$)/, "Лише літери")
         .required("Це поле необхідно заповнити"),
       phone: Yup.string()
-        .matches(/(^[0-9\+\-]{13}$)/, "Неправильно вказаний номер")
+        .matches(/(^[0-9+-]{13}$)/, "Неправильно вказаний номер")
         .required("Це поле необхідно заповнити"),
       address: Yup.string().required("Це поле необхідно заповнити"),
     }),
