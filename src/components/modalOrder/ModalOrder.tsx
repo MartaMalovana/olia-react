@@ -71,7 +71,7 @@ export default function ModalOrder({
         setWarehouses(newArr);
       })
       .catch(console.log);
-  }, [inputWh]);
+  }, [inputWh, selectedCity]);
 
   const formik = useFormik({
     initialValues: {
