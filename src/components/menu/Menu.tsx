@@ -13,7 +13,6 @@ type Props = { close: () => void };
 
 export default function Menu({ close }: Props) {
   const { pathname } = useLocation();
-  console.log(pathname);
 
   return (
     <nav className={styles.navigation} onClick={() => close()}>
@@ -22,7 +21,13 @@ export default function Menu({ close }: Props) {
           <Link to="/">
             <div>
               {pathname === "/" && (
-                <img src={active} width={50} height={50} alt="icon leaves" />
+                <img
+                  src={active}
+                  width={50}
+                  height={50}
+                  alt="icon leaves"
+                  className={styles.active_icon}
+                />
               )}
               {/* <img
                 src={main}
@@ -41,7 +46,13 @@ export default function Menu({ close }: Props) {
           <Link to="/olia">
             <div>
               {pathname === "/olia" && (
-                <img src={active} width={50} height={50} alt="icon leaves" />
+                <img
+                  src={active}
+                  width={50}
+                  height={50}
+                  alt="icon leaves"
+                  className={styles.active_icon}
+                />
               )}
               {/* <img
                 src={olia}
@@ -58,7 +69,13 @@ export default function Menu({ close }: Props) {
           <Link to="/boroshno">
             <div>
               {pathname === "/boroshno" && (
-                <img src={active} width={50} height={50} alt="icon leaves" />
+                <img
+                  src={active}
+                  width={50}
+                  height={50}
+                  alt="icon leaves"
+                  className={styles.active_icon}
+                />
               )}
               {/* <img
                 src={flour}
@@ -75,7 +92,13 @@ export default function Menu({ close }: Props) {
           <Link to="/zhmuh">
             <div>
               {pathname === "/zhmuh" && (
-                <img src={active} width={50} height={50} alt="icon leaves" />
+                <img
+                  src={active}
+                  width={50}
+                  height={50}
+                  alt="icon leaves"
+                  className={styles.active_icon}
+                />
               )}
               {/* <img
                 src={zhmuh}
@@ -92,7 +115,13 @@ export default function Menu({ close }: Props) {
           <Link to="/podarynkovi-naboru">
             <div>
               {pathname === "/podarynkovi-naboru" && (
-                <img src={active} width={50} height={50} alt="icon leaves" />
+                <img
+                  src={active}
+                  width={50}
+                  height={50}
+                  alt="icon leaves"
+                  className={styles.active_icon}
+                />
               )}
               {/* <img
                 src={present}
@@ -109,7 +138,13 @@ export default function Menu({ close }: Props) {
           <Link to="/dostavka-oplata">
             <div>
               {pathname === "/dostavka-oplata" && (
-                <img src={active} width={50} height={50} alt="icon leaves" />
+                <img
+                  src={active}
+                  width={50}
+                  height={50}
+                  alt="icon leaves"
+                  className={styles.active_icon}
+                />
               )}
               {/* <img
                 src={dostavka}
@@ -126,7 +161,13 @@ export default function Menu({ close }: Props) {
           <Link to="/kontaktu">
             <div>
               {pathname === "/kontaktu" && (
-                <img src={active} width={50} height={50} alt="icon leaves" />
+                <img
+                  src={active}
+                  width={50}
+                  height={50}
+                  alt="icon leaves"
+                  className={styles.active_icon}
+                />
               )}
               {/* <img
                 src={komanda}

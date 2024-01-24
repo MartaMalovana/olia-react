@@ -14,7 +14,6 @@ export default function Olia({ addItem }: { addItem: any }) {
 
   const handleCheckedList: (id: number, size: string) => void = (id, size) => {
     setCheckedList((data) => {
-      console.log(data);
       let newData = JSON.parse(JSON.stringify(data));
       if (newData.lenght === 0) return;
       let item = newData.find(
@@ -25,7 +24,6 @@ export default function Olia({ addItem }: { addItem: any }) {
       } else {
         item.sizeChecked = size;
       }
-      console.log(newData);
 
       return newData;
     });

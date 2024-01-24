@@ -4,6 +4,7 @@ import styles from "./styles.module.scss";
 import AmountButtons from "../amountButtons/AmountButtons";
 import DeleteFromBasket from "../deleteFromBasket/DeleteFromBasket";
 import { Link } from "react-router-dom";
+import ModalOrder from "../modalOrder/ModalOrder";
 
 type Props = {
   changeBasketAmount: (itemId: number, operation: string) => void;
@@ -21,12 +22,13 @@ type DeleteInfo = { index: number; operation: string };
 
 export default function Basket({ changeBasketAmount }: Props) {
   const basketData = useContext<Item[]>(BasketData);
-  console.log(basketData);
   const [showDelete, setShowDelete] = useState(false);
   const [deleteData, setDeleteData] = useState<DeleteInfo>({
     index: 0,
     operation: "delete",
   });
+  const [orderForm, setOrderForm] = useState(false);
+  const [orderButton, setOrderButton] = useState(true);
 
   const totalPrice: () => number = () => {
     return basketData.reduce(
@@ -107,7 +109,17 @@ export default function Basket({ changeBasketAmount }: Props) {
           <Link to="/olia" className={styles.continue_shopping}>
             Продовжити знайомство з продукцією
           </Link>
-          <button className={styles.order_button}>Оформити замовлення</button>
+          {orderButton && (
+            <button
+              className={styles.order_button}
+              onClick={() => {
+                setOrderForm(true);
+                setOrderButton(!orderButton);
+              }}
+            >
+              Оформити замовлення
+            </button>
+          )}
         </div>
       ) : (
         <p className={styles.empty_basket}>Кошик порожній</p>
@@ -118,6 +130,14 @@ export default function Basket({ changeBasketAmount }: Props) {
           action={changeBasketAmount}
           data={deleteData}
           showModal={() => setShowDelete(false)}
+        />
+      )}
+
+      {orderForm && (
+        <ModalOrder
+          products={basketData}
+          close={() => setOrderForm(false)}
+          showOrderButton={() => setOrderButton(!orderButton)}
         />
       )}
     </div>

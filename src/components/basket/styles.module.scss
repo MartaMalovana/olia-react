@@ -1,6 +1,7 @@
 @import "../../styles/variables.module.scss";
 
 .container {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -98,21 +99,43 @@
 .order_button {
   display: block;
   margin: 0 auto 30px;
-  padding: 10px 30px;
+  padding: 7px 20px;
   border: 1px solid transparent;
-  border-radius: 15px;
-  color: $color-decor-3;
-  background-color: #0d0d0dc9;
+  border-radius: 20px;
+  color: black;
+  background-color: $color-gold;
   text-transform: uppercase;
   font-weight: bold;
+  box-shadow: rgba(99, 99, 99, 0.7) 0px 2px 8px 0px;
+  font-size: 14px;
+
+  @media screen and (min-width: 1000px) {
+    padding: 10px 30px;
+    font-size: 16px;
+  }
 }
 
 .continue_shopping {
   display: block;
-  color: grey;
-  text-decoration: underline;
-  margin-bottom: 40px;
+  color: black;
+  width: fit-content;
+  margin: 0 auto 30px;
   text-align: center;
+  font-size: 14px;
+  border-radius: 15px;
+  padding: 3px 15px;
+  box-shadow: rgba(99, 99, 99, 0.7) 0px 2px 8px 0px;
+  border: 1px solid transparent;
+  background-color: $color-background;
+
+  @media screen and (min-width: 1000px) {
+    padding: 3px 15px;
+    font-size: 16px;
+  }
+
+  &:hover {
+    background-color: $color-gold;
+  }
 }
 
 .empty_basket {
