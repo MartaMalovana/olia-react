@@ -3,6 +3,8 @@ export default function apiNovaPoshta(
   city: string,
   input: string
 ) {
+  console.log(input);
+
   if (!city) return;
   console.log(city);
   const promise = new Promise(async (resolve, reject) => {
