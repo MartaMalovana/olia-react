@@ -32,8 +32,6 @@ export default function ModalOrder({
   close,
   showOrderButton,
 }: Props) {
-  const [meestListOpen, setMeestListOpen] = useState(false);
-
   const formik = useFormik({
     initialValues: {
       lastName: "",
@@ -125,7 +123,7 @@ export default function ModalOrder({
         formik.setFieldValue("cities", data);
       })
       .catch(console.log);
-  }, [formik.values.city]);
+  }, [formik.values.city, formik]);
 
   useEffect(() => {
     // User've chosen "novaposhta" post company. And selects another city from select options or enters another warehouse number to get new list options
@@ -143,7 +141,7 @@ export default function ModalOrder({
         formik.setFieldValue("warehouses", data);
       })
       .catch(console.log);
-  }, [formik.values.inputWh, formik.values.address]);
+  }, [formik.values.inputWh, formik.values.address, formik]);
 
   useEffect(() => {
     // User've chosen "meest" post company. And enters street name in input to get list of warehouses
@@ -161,7 +159,7 @@ export default function ModalOrder({
         // setMeestListOpen(true);
       })
       .catch(console.log);
-  }, [formik.values.meestCity]);
+  }, [formik.values.meestCity, formik]);
 
   const aaa = (e: any) => {
     e.preventDefault();

@@ -3,10 +3,7 @@ export default function apiNovaPoshta(
   city: string,
   input: string
 ) {
-  console.log(input);
-
   if (!city) return;
-  console.log(city);
   const promise = new Promise(async (resolve, reject) => {
     try {
       const result: any = await fetch("https://api.novaposhta.ua/v2.0/json/", {
