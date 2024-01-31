@@ -23,7 +23,8 @@
   background: #ffcd50 url("../icons//arrow-up.svg") no-repeat 50% 50%;
   background-size: 25px 25px;
   color: #f2dbb7;
-  border: 1px solid black;
+  border: 1px solid transparent;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 3px 2px;
 }
 
 .main_container {

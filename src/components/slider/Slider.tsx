@@ -10,10 +10,11 @@ export default function Slider() {
         autoPlay={true}
         infiniteLoop={true}
         showThumbs={false}
+        interval={10000}
       >
         <div className={styles.slider_item}>
           <img
-            src={process.env.PUBLIC_URL + "/images/reklama/one.png"}
+            src={process.env.PUBLIC_URL + "/images/reklama/one.jpg"}
             alt="product banner"
           />
         </div>
