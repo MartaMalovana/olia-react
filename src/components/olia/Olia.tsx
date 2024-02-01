@@ -3,7 +3,7 @@ import { useState } from "react";
 import Product from "./Product";
 import styles from "./styles.module.scss";
 import data from "./olia.json";
-import AddProductMessage from "../addProductMessage/AddProductMessage";
+import Message from "../message/Message";
 
 export default function Olia({ addItem }: { addItem: any }) {
   const [success, setSuccess] = useState(false);
@@ -50,12 +50,8 @@ export default function Olia({ addItem }: { addItem: any }) {
       </main>
 
       {/* Modal "adding product to basket, status success or error" */}
-      {success && (
-        <AddProductMessage close={() => setSuccess(false)} type="success" />
-      )}
-      {error && (
-        <AddProductMessage close={() => setError(false)} type="error" />
-      )}
+      {success && <Message close={() => setSuccess(false)} type="success" />}
+      {error && <Message close={() => setError(false)} type="error" />}
     </div>
   );
 }

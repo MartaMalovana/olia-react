@@ -18,7 +18,7 @@ export default function Footer() {
         <div className={styles.footer_contacts}>
           <div className={styles.social_container}>
             <a
-              href="https://www.facebook.com/profile.php?id=61552696846756"
+              href="https://www.facebook.com/profile.php?id=61553141007589"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -44,13 +44,12 @@ export default function Footer() {
               />
             </a>
           </div>
-          <a href="mailto:marta.malovana@gmail.com?subject='olia'&body='hello martas">
-            olia@gmail.com
-          </a>
           <a href="tel:+380985583388">+380985583388</a>
+          <a href="mailto:matolli_oil@outlook.com">matolli_oil@outlook.com</a>
         </div>
         <div className={styles.footer_links}>
           <Link to="/kontaktu">Про нас</Link>
+          <Link to="/dogovir-ofertu">Договір оферти</Link>
           <Link to="/dostavka-oplata">Доставка та оплата</Link>
         </div>
       </div>
