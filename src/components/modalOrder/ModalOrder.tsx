@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { PhoneInput } from "react-international-phone";
@@ -9,6 +9,10 @@ import styles from "./styles.module.scss";
 import apiNovaPoshta from "../../api/apiNovaPoshta";
 import apiMeest from "../../api/apiMeest";
 import dataConvertNovaposhta from "../../utils/dataConverterSelect";
+import delivNova from "../../icons/delivNova.png";
+import delivUkr from "../../icons/delivUkr.png";
+import delivMeest from "../../icons/delivMeest.png";
+import Message from "../message/Message";
 
 type ProductItem = {
   id: number;
@@ -25,19 +29,23 @@ type Props = {
   products: Item[];
   close: () => void;
   showOrderButton: () => void;
+  clearBasket: () => void;
 };
 
 export default function ModalOrder({
   products,
   close,
   showOrderButton,
+  clearBasket,
 }: Props) {
+  const [message, setMessage] = useState<string>("");
+
   const formik = useFormik({
     initialValues: {
       lastName: "",
       firstName: "",
       phone: "",
-      post: { value: "", label: "" },
+      post: "novaposhta",
       address: { value: "", label: "" },
       postIndex: { value: "", label: "" },
       city: "",
@@ -45,8 +53,9 @@ export default function ModalOrder({
       inputWh: "",
       warehouses: [{ value: "", label: "" }],
       meestCity: "",
-      meestStreet: "",
-      meestHouse: "",
+      ukrposhtaIndex: "",
+      comment: "",
+      connect: ["call"],
     },
     validationSchema: Yup.object({
       lastName: Yup.string()
@@ -60,18 +69,13 @@ export default function ModalOrder({
       phone: Yup.string()
         .matches(/(^[0-9+-]{13}$)/, "Неправильно вказаний номер")
         .required("Це поле необхідно заповнити"),
-      post: Yup.object().shape({
-        value: Yup.string(),
-        label: Yup.string(),
-      }),
+      post: Yup.string(),
       address: Yup.object().shape({
         value: Yup.string().required("Це поле необхідно заповнити"),
         label: Yup.string(),
       }),
       postIndex: Yup.object().shape({
-        value: Yup.string()
-          // .matches(/^([0-9]{4,6})$/, "Введіть валідний числовий індекс")
-          .required("Це поле необхідно заповнити"),
+        value: Yup.string().required("Це поле необхідно заповнити"),
         label: Yup.string(),
       }),
       city: Yup.string(),
@@ -89,32 +93,31 @@ export default function ModalOrder({
         })
       ),
       meestCity: Yup.string(),
-      // .required("Це поле необхідно заповнити"),
-      meestStreet: Yup.string().matches(
-        /(^([0-9а-яА-ЯьіІїЇ-]+ {0,})+$)/,
-        "Лише літери та цифриі"
-      ),
-      // .required("Це поле необхідно заповнити"),
-      meestHouse: Yup.string().matches(/^([0-9]{1,5})$/, "Лише цифри"),
+      ukrposhtaIndex: Yup.string().matches(/^([0-9]{1,})$/, "Лише цифри"),
+      comment: Yup.string(),
+      connect: Yup.array().of(Yup.string()),
     }),
     onSubmit: (values) => {
-      console.log("submit");
       let newData = {
-        name: formik.values.firstName,
-        lastName: formik.values.lastName,
-        phone: formik.values.phone,
-        post: formik.values.post.label,
-        city: formik.values.address.label,
-        warehouse: formik.values.postIndex.label,
+        name: values.firstName,
+        lastName: values.lastName,
+        phone: values.phone,
+        post: values.post,
+        city: values.address.label,
+        warehouse: values.postIndex.label,
+        comment: values.comment,
+        connect: values.connect,
         basket: products,
       };
-      alert(JSON.stringify({ newData }, null, 2));
+      console.log(newData);
+      setMessage("submitFormSuccess");
+      // alert(JSON.stringify({ newData }, null, 2));
     },
   });
 
   useEffect(() => {
     // User've chosen "novaposhta" post company. And enters city name in input to get list of cities
-    if (formik.values.post.value !== "novaposhta") return;
+    if (formik.values.post !== "novaposhta") return;
     const promise = apiNovaPoshta("cities", formik.values.city, "");
     if (!promise) return;
     promise
@@ -127,7 +130,7 @@ export default function ModalOrder({
 
   useEffect(() => {
     // User've chosen "novaposhta" post company. And selects another city from select options or enters another warehouse number to get new list options
-    if (formik.values.post.value !== "novaposhta") return;
+    if (formik.values.post !== "novaposhta") return;
     if (formik.values.inputWh === "") return;
     const promise = apiNovaPoshta(
       "warehouses",
@@ -145,18 +148,13 @@ export default function ModalOrder({
 
   useEffect(() => {
     // User've chosen "meest" post company. And enters street name in input to get list of warehouses
-    if (formik.values.post.value !== "meest") return;
+    if (formik.values.post !== "meest") return;
     if (formik.values.meestCity === "") return;
-    const promise = apiMeest(
-      formik.values.meestCity
-      // formik.values.meestStreet,
-      // formik.values.meestHouse
-    );
+    const promise = apiMeest(formik.values.meestCity);
     promise
       .then((result: any) => {
         const data = dataConvertNovaposhta(result.result, "meest");
         data.length !== 0 && formik.setFieldValue("warehouses", data);
-        // setMeestListOpen(true);
       })
       .catch(console.log);
   }, [formik.values.meestCity, formik]);
@@ -166,17 +164,45 @@ export default function ModalOrder({
     console.log(formik);
     try {
       formik.handleSubmit();
+      // close();
+      // clearBasket();
     } catch (error) {
       console.log(error);
+      setMessage("submitFormError");
     }
+  };
+
+  const handleChangePost = (e: any) => {
+    formik.setFieldValue("address", { value: "", label: "" });
+    formik.setFieldValue("postIndex", { value: "", label: "" });
+    formik.setFieldValue("city", "");
+    formik.setFieldValue("cities", [{ value: "", label: "" }]);
+    formik.setFieldValue("inputWh", "");
+    formik.setFieldValue("warehouses", [{ value: "", label: "" }]);
+    formik.setFieldValue("meestCity", "");
+    formik.setFieldValue("post", e.target.value);
+    formik.errors = {};
+  };
+
+  const haldleChangeConnect = (e: any) => {
+    let newArr = [...formik.values.connect];
+    const index = newArr.indexOf(e.target.value);
+    if (index !== -1) {
+      newArr.splice(index, 1);
+    } else {
+      newArr.push(e.target.value);
+    }
+    formik.setFieldValue("connect", newArr);
   };
 
   return (
     <div className={styles.container}>
       <p className={styles.title}>Оформлення замовлення</p>
       <form className={styles.form} onSubmit={aaa}>
+        {/* CLIENT INFO (NAME, LAST NAME, PHONE NUMBER) */}
         <fieldset>
           <legend>Дані отримувача</legend>
+          {/* Last name */}
           <label className={styles.label}>
             <span className={styles.label_text}>Прізвище</span>
             <input
@@ -195,6 +221,7 @@ export default function ModalOrder({
               </span>
             )}
           </label>
+          {/* First name */}
           <label className={styles.label}>
             <span className={styles.label_text}>Ім'я</span>
             <input
@@ -211,6 +238,7 @@ export default function ModalOrder({
               </span>
             )}
           </label>
+          {/* Phone */}
           <label className={styles.label}>
             <span className={styles.label_text}>Номер телефону</span>
             <PhoneInput
@@ -228,33 +256,45 @@ export default function ModalOrder({
             )}
           </label>
         </fieldset>
+        {/* DELIVERY INFO (DELIVERY COMPANY NAME, CITY AND WAREHOUSE ADDRESS) */}
         <fieldset>
           <legend>Служба доставки</legend>
+          {/* Delivery company select */}
           <span className={styles.label_select}>Оберіть службу доставки</span>
-          <Select
-            name="post"
-            value={formik.values.post}
-            onChange={(e: any) => {
-              formik.setFieldValue("address", { value: "", label: "" });
-              formik.setFieldValue("postIndex", { value: "", label: "" });
-              formik.setFieldValue("city", "");
-              formik.setFieldValue("cities", [{ value: "", label: "" }]);
-              formik.setFieldValue("inputWh", "");
-              formik.setFieldValue("warehouses", [{ value: "", label: "" }]);
-              formik.setFieldValue("meestCity", "");
-              formik.setFieldValue("meestStreet", "");
-              formik.setFieldValue("meestHouse", "");
-              formik.setFieldValue("post", e);
-              formik.errors = {};
-            }}
-            options={[
-              { value: "novaposhta", label: "Нова Пошта" },
-              { value: "ukrposhta", label: "Укрпошта" },
-              { value: "meest", label: "Meest Пошта" },
-            ]}
-            className={styles.select}
-          />
-          {formik.values.post.value === "novaposhta" && (
+          <div className={styles.delivery}>
+            <label>
+              <input
+                type="radio"
+                name="delivery"
+                value="novaposhta"
+                checked={formik.values.post === "novaposhta"}
+                onChange={handleChangePost}
+              />
+              <img src={delivNova} width={60} alt="nova poshta icon" />
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="delivery"
+                value="ukrposhta"
+                checked={formik.values.post === "ukrposhta"}
+                onChange={handleChangePost}
+              />
+              <img src={delivUkr} width={60} alt="ukrposhta icon" />
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="delivery"
+                value="meest"
+                checked={formik.values.post === "meest"}
+                onChange={handleChangePost}
+              />
+              <img src={delivMeest} width={60} alt="meest poshta icon" />
+            </label>
+          </div>
+          {/* Nova Poshta company, city select. Send api fetch on input change */}
+          {formik.values.post === "novaposhta" && (
             <>
               <span className={styles.label_select}>
                 Введіть назву населеного пункту
@@ -270,17 +310,23 @@ export default function ModalOrder({
                   formik.setFieldValue("city", e);
                 }, 100)}
                 onChange={(e: any) => formik.setFieldValue("address", e)}
+                onFocus={(e: any) => {
+                  formik.setFieldValue("warehouses", [
+                    { value: "", label: "" },
+                  ]);
+                  formik.setFieldValue("address", { value: "", label: "" });
+                }}
                 options={formik.values.cities}
                 className={styles.select}
               />
             </>
           )}
-
-          {formik.values.post.value === "novaposhta" &&
+          {/* Nova Poshta company, warehouse select. Send api fetch on input change */}
+          {formik.values.post === "novaposhta" &&
             formik.values.address.value && (
               <>
                 <span className={styles.label_select}>
-                  Введіть номер відділення
+                  Введіть номер відділення або поштомату
                 </span>
                 <Select
                   value={formik.values.postIndex}
@@ -295,32 +341,36 @@ export default function ModalOrder({
                 />
               </>
             )}
-
-          {formik.values.post.value === "ukrposhta" && (
+          {/* Ukrposhta company */}
+          {formik.values.post === "ukrposhta" && (
             <div style={{ marginBottom: "20px" }}>
+              {/* Warehouse index */}
               <label className={styles.ukrposhta_label}>
                 <span className={styles.ukrposhta_title}>
                   Індекс відділення
                 </span>
                 <input
-                  name="postIndex"
+                  name="ukrposhtaIndex"
                   type="text"
                   value={formik.values.postIndex.value}
-                  onChange={(e) =>
+                  onChange={(e) => {
+                    formik.setFieldValue("ukrposhtaIndex", e.target.value);
                     formik.setFieldValue("postIndex", {
                       value: e.target.value,
                       label: e.target.value,
-                    })
-                  }
+                    });
+                  }}
                   placeholder="01001"
                   className={styles.ukrposhta_input}
                 />
-                {formik.touched.postIndex && formik.errors.postIndex && (
-                  <span className={styles.ukrposhta_error}>
-                    {formik.errors.postIndex.value}
-                  </span>
-                )}
+                {formik.touched.ukrposhtaIndex &&
+                  formik.errors.ukrposhtaIndex && (
+                    <span className={styles.ukrposhta_error}>
+                      {formik.errors.ukrposhtaIndex}
+                    </span>
+                  )}
               </label>
+              {/* City name */}
               <label className={styles.ukrposhta_label}>
                 <span className={styles.ukrposhta_title}>
                   Назва населеного пункту
@@ -346,8 +396,8 @@ export default function ModalOrder({
               </label>
             </div>
           )}
-
-          {formik.values.post.value === "meest" && (
+          {/* Meest company, send api fetch on input change */}
+          {formik.values.post === "meest" && (
             <>
               <span
                 className={styles.label_select}
@@ -357,72 +407,13 @@ export default function ModalOrder({
                 потрібно знайти відділення Meest (наприклад: Київ, вул.
                 Хрещатик, 21)
               </span>
-              {/* <label className={styles.meest_label}>
-                <span>Назва населеного пункту</span>
-                <input
-                  type="text"
-                  name="meestCity"
-                  onChange={(e) => {
-                    formik.setFieldValue("meestStreet", "");
-                    formik.setFieldValue("meestHouse", "");
-                    formik.setFieldValue("postIndex", { value: "", label: "" });
-                    formik.setFieldValue("warehouses", [
-                      { value: "", label: "" },
-                    ]);
-                    formik.setFieldValue("meestCity", e.target.value);
-                  }}
-                  value={formik.values.meestCity}
-                  className={styles.ukrposhta_input}
-                  style={{ backgroundColor: "white" }}
-                  placeholder="Київ"
-                />
-                {formik.touched.meestCity && formik.errors.meestCity && (
-                  <span className={styles.ukrposhta_error}>
-                    {formik.errors.meestCity}
-                  </span>
-                )}
-              </label> */}
-              {/* <label className={styles.meest_label}>
-                <span>Вулиця</span>
-                <input
-                  type="text"
-                  name="meestStreet"
-                  onChange={formik.handleChange}
-                  value={formik.values.meestStreet}
-                  className={styles.ukrposhta_input}
-                  style={{ backgroundColor: "white" }}
-                  placeholder="Грушевського"
-                />
-                {formik.touched.meestStreet && formik.errors.meestStreet && (
-                  <span className={styles.ukrposhta_error}>
-                    {formik.errors.meestStreet}
-                  </span>
-                )}
-              </label> */}
-              {/* <label className={styles.meest_label}>
-                <span>Номер будинку (необов'язково)</span>
-                <input
-                  type="text"
-                  name="meestHouse"
-                  onChange={formik.handleChange}
-                  value={formik.values.meestHouse}
-                  className={styles.ukrposhta_input}
-                  style={{ backgroundColor: "white" }}
-                  placeholder="14"
-                />
-                {formik.touched.meestHouse && formik.errors.meestHouse && (
-                  <span className={styles.ukrposhta_error}>
-                    {formik.errors.meestHouse}
-                  </span>
-                )}
-              </label> */}
               <Select
                 value={formik.values.postIndex}
                 inputValue={formik.values.meestCity}
                 options={formik.values.warehouses}
                 onChange={(e: any) => {
                   formik.setFieldValue("postIndex", e);
-                  // setMeestListOpen(!meestListOpen);
+                  formik.setFieldValue("address", e);
                 }}
                 onInputChange={_.debounce((inputData: string) => {
                   let newCityName = inputData
@@ -435,15 +426,66 @@ export default function ModalOrder({
                     .join(". ");
                   formik.setFieldValue("meestCity", newCityName);
                 }, 100)}
-                // menuIsOpen={meestListOpen}
+                className={styles.select}
               />
             </>
           )}
         </fieldset>
+        <fieldset>
+          <legend>Деталі замовлення</legend>
+          <label style={{ marginBottom: "20px" }}>
+            <span className={styles.label_select}>Коментар до замовлення</span>
+            <textarea
+              className={styles.address}
+              name="comment"
+              value={formik.values.comment}
+              onChange={(e: any) =>
+                formik.setFieldValue("comment", e.target.value)
+              }
+            ></textarea>
+          </label>
+          <span className={styles.label_select}>
+            Як краще з Вами зв'язатись?
+          </span>
+          <div className={styles.connect} style={{ marginTop: "10px" }}>
+            <label>
+              <input
+                type="checkbox"
+                name="connect"
+                value="call"
+                checked={formik.values.connect.includes("call")}
+                onChange={haldleChangeConnect}
+              />
+              <span className={styles.connect_item}>Зателефонуйте мені</span>
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="connect"
+                value="viber"
+                checked={formik.values.connect.includes("viber")}
+                onChange={haldleChangeConnect}
+              />
+              <span className={styles.connect_item}>Вайбер</span>
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="connect"
+                value="telegram"
+                checked={formik.values.connect.includes("telegram")}
+                onChange={haldleChangeConnect}
+              />
+              <span className={styles.connect_item}>Телеграм</span>
+            </label>
+          </div>
+        </fieldset>
+        {/* SUBMIT BUTTON */}
         <button className={styles.make_order} type="submit">
           ЗАМОВИТИ
         </button>
       </form>
+      {/* CLOSE MODAL BUTTON */}
       <button
         className={styles.close_modal}
         onClick={() => {
@@ -453,6 +495,14 @@ export default function ModalOrder({
       >
         Закрити
       </button>
+      {message && (
+        <Message
+          type={message}
+          close={() => setMessage("")}
+          closeOrder={close}
+          clearBasket={clearBasket}
+        />
+      )}
     </div>
   );
 }

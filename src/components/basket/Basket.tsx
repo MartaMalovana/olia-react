@@ -8,6 +8,7 @@ import ModalOrder from "../modalOrder/ModalOrder";
 
 type Props = {
   changeBasketAmount: (itemId: number, operation: string) => void;
+  clearBasket: () => void;
 };
 type ProductItem = {
   id: number;
@@ -20,7 +21,7 @@ type ProductItem = {
 type Item = { product: ProductItem; size: string; amount: number };
 type DeleteInfo = { index: number; operation: string };
 
-export default function Basket({ changeBasketAmount }: Props) {
+export default function Basket({ changeBasketAmount, clearBasket }: Props) {
   const basketData = useContext<Item[]>(BasketData);
   const [showDelete, setShowDelete] = useState(false);
   const [deleteData, setDeleteData] = useState<DeleteInfo>({
@@ -65,6 +66,7 @@ export default function Basket({ changeBasketAmount }: Props) {
     <div className={styles.container}>
       {basketData?.length !== 0 ? (
         <div style={{ margin: "20px 20px auto" }}>
+          <h1>Кошик</h1>
           <ul className={styles.basketList}>
             {basketData &&
               basketData.map(({ product, size, amount }, index) => (
@@ -138,6 +140,7 @@ export default function Basket({ changeBasketAmount }: Props) {
           products={basketData}
           close={() => setOrderForm(false)}
           showOrderButton={() => setOrderButton(!orderButton)}
+          clearBasket={clearBasket}
         />
       )}
     </div>

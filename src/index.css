@@ -1,9 +1,16 @@
+@font-face {
+  font-family: 'MyFont';
+  src:
+    url('./styles/crimson-font.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: "MyFont",
     sans-serif;
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
@@ -12,10 +19,10 @@ body {
   /* background-color: #edc9af; */
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */
 
 * {
   box-sizing: border-box;

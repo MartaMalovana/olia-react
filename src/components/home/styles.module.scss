@@ -71,4 +71,8 @@
   text-align: center;
   color: black;
   margin: 0;
+  font-size: 18px;
+  @media screen and (min-width: "1000px") {
+    font-size: 22px;
+  }
 }

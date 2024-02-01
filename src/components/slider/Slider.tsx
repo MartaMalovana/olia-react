@@ -30,6 +30,18 @@ export default function Slider() {
             alt="product banner"
           />
         </div>
+        <div className={styles.slider_item}>
+          <img
+            src={process.env.PUBLIC_URL + "/images/reklama/four.jpg"}
+            alt="product banner"
+          />
+        </div>
+        <div className={styles.slider_item}>
+          <img
+            src={process.env.PUBLIC_URL + "/images/reklama/five.jpg"}
+            alt="product banner"
+          />
+        </div>
       </Carousel>
     </div>
   );

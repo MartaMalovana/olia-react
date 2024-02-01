@@ -18,12 +18,29 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 300px;
-  height: 200px;
+  width: auto;
+  height: auto;
+  min-height: 200px;
+  padding: 30px;
+  margin: 30px;
   border-radius: 5px;
   border-top-right-radius: 35px;
   border-bottom-left-radius: 35px;
   background-color: $color-gold;
+  @media screen and (min-width: "1000px") {
+    min-width: 300px;
+    min-height: 200px;
+    padding: 50px;
+  }
+  p {
+    text-align: center;
+    line-height: 1.5;
+    font-size: 20px;
+    @media screen and (min-width: "1000px") {
+      line-height: 2;
+      font-size: 24px;
+    }
+  }
 }
 
 .button {
@@ -39,6 +56,10 @@
   cursor: pointer;
   color: black;
   background-color: $color-background;
+  font-size: 17px;
+  @media screen and (min-width: "1000px") {
+    font-size: 18px;
+  }
 }
 .button:active {
   transform: scale(0.92);

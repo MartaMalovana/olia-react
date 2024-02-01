@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { useState, createContext, lazy } from "react";
+import { useState, createContext, lazy, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import "./styles/App.css";
 import SuspenseComponent from "./components/suspense/Suspense";
@@ -19,6 +19,9 @@ const Podarynkovi = lazy(
 const Zhmuh = lazy(() => import("./components/zhmuh/Zhmuh"));
 const Kontaktu = lazy(() => import("./components/kontaktu/Kontaktu"));
 const Basket = lazy(() => import("./components/basket/Basket"));
+const DogovirOfertu = lazy(
+  () => import("./components/dogovirOfertu/DogovirOfertu")
+);
 
 // TYPES
 type ProductItem = {
@@ -36,8 +39,16 @@ export const BasketData = createContext<Item[]>([]);
 
 // APP COMPONENT
 export function App() {
-  const [basket, setBasket] = useState<Item[]>([]);
+  const [basket, setBasket] = useState<Item[]>(
+    JSON.parse(localStorage.getItem("basket") || "[]")
+  );
   const { ref, inView } = useInView();
+
+  useEffect(() => {
+    console.log("basket", basket);
+    localStorage.setItem("basket", JSON.stringify(basket));
+  }, [basket]);
+
   const handleScroll = () => {
     window.scroll({
       top: 0,
@@ -140,7 +151,18 @@ export function App() {
               path="/basket"
               element={
                 <SuspenseComponent>
-                  <Basket changeBasketAmount={changeBasketAmount} />
+                  <Basket
+                    changeBasketAmount={changeBasketAmount}
+                    clearBasket={() => setBasket([])}
+                  />
+                </SuspenseComponent>
+              }
+            ></Route>
+            <Route
+              path="/dogovir-ofertu"
+              element={
+                <SuspenseComponent>
+                  <DogovirOfertu />
                 </SuspenseComponent>
               }
             ></Route>
