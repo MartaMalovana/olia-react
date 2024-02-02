@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 
 export default function DogovirOfertu() {
   return (
-    <div className={styles.container}>
+    <div className={styles.container_dogovir}>
       <h1>ПУБЛІЧНИЙ ДОГОВІР (ОФЕРТА)</h1>
       <p>
         Цей договір є офіційною та публічною пропозицією Продавця укласти

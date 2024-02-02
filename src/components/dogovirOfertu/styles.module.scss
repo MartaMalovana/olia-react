@@ -1,4 +1,4 @@
-.container {
+.container_dogovir {
   //   display: flex;
   //   justify-content: center;
   //   align-items: center;
@@ -6,31 +6,32 @@
   padding: 35px 20px 20px;
   font-size: 16px;
   @media screen and (min-width: "1000px") {
+    padding: 0px;
     font-size: 18px;
   }
-}
 
-h1 {
-  margin: 10px auto;
-  font-size: 20px;
-  text-align: center;
-  @media screen and (min-width: "1000px") {
-    font-size: 22px;
-  }
-}
-
-h2 {
-  margin: 10px auto;
-  font-size: 18px;
-  text-align: center;
-  @media screen and (min-width: "1000px") {
+  h1 {
+    margin: 10px auto;
     font-size: 20px;
+    text-align: center;
+    @media screen and (min-width: "1000px") {
+      font-size: 22px;
+    }
   }
-}
 
-li {
-  margin-bottom: 15px;
-  ul {
-    margin-top: 15px;
+  h2 {
+    margin: 10px auto;
+    font-size: 18px;
+    text-align: center;
+    @media screen and (min-width: "1000px") {
+      font-size: 20px;
+    }
+  }
+
+  li {
+    margin-bottom: 15px;
+    ul {
+      margin-top: 15px;
+    }
   }
 }
