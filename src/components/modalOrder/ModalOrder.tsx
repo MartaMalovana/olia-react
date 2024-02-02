@@ -466,7 +466,7 @@ export default function ModalOrder({
                 checked={formik.values.connect.includes("viber")}
                 onChange={haldleChangeConnect}
               />
-              <span className={styles.connect_item}>Вайбер</span>
+              <span className={styles.connect_item}>Viber</span>
             </label>
             <label>
               <input
@@ -476,7 +476,7 @@ export default function ModalOrder({
                 checked={formik.values.connect.includes("telegram")}
                 onChange={haldleChangeConnect}
               />
-              <span className={styles.connect_item}>Телеграм</span>
+              <span className={styles.connect_item}>Telegram</span>
             </label>
           </div>
         </fieldset>

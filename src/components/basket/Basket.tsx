@@ -65,7 +65,7 @@ export default function Basket({ changeBasketAmount, clearBasket }: Props) {
   return (
     <div className={styles.container}>
       {basketData?.length !== 0 ? (
-        <div style={{ margin: "20px 20px auto" }}>
+        <div style={{ margin: "0 20px auto" }}>
           <h1>Кошик</h1>
           <ul className={styles.basketList}>
             {basketData &&

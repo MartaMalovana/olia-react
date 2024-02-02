@@ -89,84 +89,85 @@ export function App() {
           {useMediaQuery("(min-width:1000px)") && (
             <Menu close={() => console.log("menu")} />
           )}
-
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <SuspenseComponent>
-                  <Home />
-                </SuspenseComponent>
-              }
-            ></Route>
-            <Route
-              path="/olia"
-              element={
-                <SuspenseComponent>
-                  <Olia addItem={addItem} />
-                </SuspenseComponent>
-              }
-            ></Route>
-            <Route
-              path="/boroshno"
-              element={
-                <SuspenseComponent>
-                  <Boroshno />
-                </SuspenseComponent>
-              }
-            ></Route>
-            <Route
-              path="/dostavka-oplata"
-              element={
-                <SuspenseComponent>
-                  <Dostavka />
-                </SuspenseComponent>
-              }
-            ></Route>
-            <Route
-              path="/podarynkovi-naboru"
-              element={
-                <SuspenseComponent>
-                  <Podarynkovi />
-                </SuspenseComponent>
-              }
-            ></Route>
-            <Route
-              path="/zhmuh"
-              element={
-                <SuspenseComponent>
-                  <Zhmuh />
-                </SuspenseComponent>
-              }
-            ></Route>
-            <Route
-              path="/kontaktu"
-              element={
-                <SuspenseComponent>
-                  <Kontaktu />
-                </SuspenseComponent>
-              }
-            ></Route>
-            <Route
-              path="/basket"
-              element={
-                <SuspenseComponent>
-                  <Basket
-                    changeBasketAmount={changeBasketAmount}
-                    clearBasket={() => setBasket([])}
-                  />
-                </SuspenseComponent>
-              }
-            ></Route>
-            <Route
-              path="/dogovir-ofertu"
-              element={
-                <SuspenseComponent>
-                  <DogovirOfertu />
-                </SuspenseComponent>
-              }
-            ></Route>
-          </Routes>
+          <div className="main_page">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <SuspenseComponent>
+                    <Home />
+                  </SuspenseComponent>
+                }
+              ></Route>
+              <Route
+                path="/olia"
+                element={
+                  <SuspenseComponent>
+                    <Olia addItem={addItem} />
+                  </SuspenseComponent>
+                }
+              ></Route>
+              <Route
+                path="/boroshno"
+                element={
+                  <SuspenseComponent>
+                    <Boroshno />
+                  </SuspenseComponent>
+                }
+              ></Route>
+              <Route
+                path="/dostavka-oplata"
+                element={
+                  <SuspenseComponent>
+                    <Dostavka />
+                  </SuspenseComponent>
+                }
+              ></Route>
+              <Route
+                path="/podarynkovi-naboru"
+                element={
+                  <SuspenseComponent>
+                    <Podarynkovi />
+                  </SuspenseComponent>
+                }
+              ></Route>
+              <Route
+                path="/zhmuh"
+                element={
+                  <SuspenseComponent>
+                    <Zhmuh />
+                  </SuspenseComponent>
+                }
+              ></Route>
+              <Route
+                path="/kontaktu"
+                element={
+                  <SuspenseComponent>
+                    <Kontaktu />
+                  </SuspenseComponent>
+                }
+              ></Route>
+              <Route
+                path="/basket"
+                element={
+                  <SuspenseComponent>
+                    <Basket
+                      changeBasketAmount={changeBasketAmount}
+                      clearBasket={() => setBasket([])}
+                    />
+                  </SuspenseComponent>
+                }
+              ></Route>
+              <Route
+                path="/dogovir-ofertu"
+                element={
+                  <SuspenseComponent>
+                    <DogovirOfertu />
+                  </SuspenseComponent>
+                }
+              ></Route>
+            </Routes>
+          </div>
         </div>
         <Footer />
         {!inView && (

@@ -3,27 +3,7 @@
 .container {
   position: relative;
   width: 100%;
-
-  @media screen and (min-width: 1190px) {
-    margin-left: 30px;
-  }
 }
-
-// .main_container {
-//   position: relative;
-//   margin: 0 auto;
-//   width: 100%;
-//   height: auto;
-//   background-color: $color-background;
-
-//   @media screen and (min-width: 1190px) {
-//     max-width: $width-desktop;
-//     margin: 30px auto;
-//     padding-left: 400px;
-//     box-shadow: rgba(99, 99, 99, 0.2) -5px 8px 10px 0px;
-//     border-bottom-left-radius: 40px;
-//   }
-// }
 
 .section_list {
   display: flex;
