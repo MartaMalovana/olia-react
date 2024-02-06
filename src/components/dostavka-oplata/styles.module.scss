@@ -17,11 +17,14 @@
     font-size: 22px;
   }
   ul {
-    list-style: inside;
     margin-bottom: 10px;
     li {
       margin: 5px;
     }
+  }
+
+  .list {
+    list-style: inside;
   }
 
   p {
@@ -59,3 +62,24 @@
 // .text_bold {
 //   font-weight: bold;
 // }
+.dostavka_title {
+  display: flex;
+  align-items: center;
+  @media screen and (min-width: "1000px") {
+    height: 120px;
+  }
+
+  img {
+    margin-right: 10px;
+    @media screen and (min-width: "1000px") {
+      width: 180px;
+    }
+  }
+
+  div {
+    display: inline-flex;
+    @media screen and (min-width: "1000px") {
+      width: 350px;
+    }
+  }
+}

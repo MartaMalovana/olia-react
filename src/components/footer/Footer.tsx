@@ -47,7 +47,16 @@ export default function Footer() {
           <a href="tel:+380985583388">+380985583388</a>
           <a href="mailto:matolli_oil@outlook.com">matolli_oil@outlook.com</a>
         </div>
-        <div className={styles.footer_links}>
+        <div
+          className={styles.footer_links}
+          onClick={() =>
+            window.scroll({
+              top: 0,
+              left: 0,
+              behavior: "smooth",
+            })
+          }
+        >
           <Link to="/kontaktu">Про нас</Link>
           <Link to="/dogovir-ofertu">Договір оферти</Link>
           <Link to="/dostavka-oplata">Доставка та оплата</Link>
