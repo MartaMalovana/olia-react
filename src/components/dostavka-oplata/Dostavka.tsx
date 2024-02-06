@@ -1,6 +1,5 @@
 import styles from "./styles.module.scss";
 import PageTitle from "../pageTitle/PageTitle";
-import { style } from "@mui/system";
 
 export default function Dostavka() {
   return (
