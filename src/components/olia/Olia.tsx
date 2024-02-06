@@ -4,6 +4,7 @@ import Product from "./Product";
 import styles from "./styles.module.scss";
 import data from "./olia.json";
 import Message from "../message/Message";
+import PageTitle from "../pageTitle/PageTitle";
 
 export default function Olia({ addItem }: { addItem: any }) {
   const [success, setSuccess] = useState(false);
@@ -32,6 +33,7 @@ export default function Olia({ addItem }: { addItem: any }) {
   return (
     <div className={styles.products}>
       <main className={styles.main}>
+        <PageTitle text={"Олії"} />
         {/* Product list */}
         <ul className={styles.product_list}>
           {data.map((product) => (

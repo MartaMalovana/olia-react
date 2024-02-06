@@ -15,7 +15,17 @@ export default function Menu({ close }: Props) {
   const { pathname } = useLocation();
 
   return (
-    <nav className={styles.navigation} onClick={() => close()}>
+    <nav
+      className={styles.navigation}
+      onClick={() => {
+        close();
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: "smooth",
+        });
+      }}
+    >
       <ul>
         <li>
           <Link to="/">
