@@ -6,7 +6,7 @@ import DeleteFromBasket from "../deleteFromBasket/DeleteFromBasket";
 import { Link } from "react-router-dom";
 import ModalOrder from "../modalOrder/ModalOrder";
 import { ProductItem, Item } from "../../shared.types";
-import Product from "../productList/Product";
+// import Product from "../productList/Product";
 
 type Props = {
   changeBasketAmount: (itemId: number, operation: string) => void;
