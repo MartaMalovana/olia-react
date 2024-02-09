@@ -1,18 +1,8 @@
 import { useState, FormEvent } from "react";
 import styles from "./styles.module.scss";
-// import arrowOpen from "../../icons/arrow-open.svg";
 import AmountButtons from "../amountButtons/AmountButtons";
 import Size from "./Size";
-
-type ProductItem = {
-  id: number;
-  name: string;
-  size: string[][];
-  description: string;
-  icon: string;
-  photo: string;
-};
-type Item = { product: ProductItem; size: string; amount: number };
+import { ProductItem, Item } from "../../shared.types";
 
 type Props = {
   product: ProductItem;
@@ -21,6 +11,7 @@ type Props = {
   errorMessage: () => void;
   handleCheckedList: (id: number, size: string) => void;
   checkedList: { id: number; sizeChecked: string }[] | [];
+  folderName: string;
 };
 
 export default function Product({
@@ -30,6 +21,7 @@ export default function Product({
   errorMessage,
   handleCheckedList,
   checkedList,
+  folderName,
 }: Props) {
   const [showInfo, setShowInfo] = useState(false);
   const [amount, setAmount] = useState(1);
@@ -74,7 +66,7 @@ export default function Product({
         {/* Product icon */}
         <img
           className={styles.icon}
-          src={`/images/product-icons/${product.icon}`}
+          src={`/images/${folderName}-icons/${product.icon}`}
           alt="product icon"
         />
         {/* Product name */}
@@ -99,12 +91,15 @@ export default function Product({
           {/* Container with product photo and form to choose product */}
           <div className={styles.photo_form_container}>
             {/* Product photo*/}
-            <img
-              src={`/images/product-photos/${product.photo}`}
-              width={100}
-              className={styles.photo}
-              alt="product icon"
-            />
+            <div className={styles.img_container}>
+              <img
+                src={`/images/${folderName}-photos/${product.photo}`}
+                width={200}
+                height={200}
+                className={styles.photo}
+                alt="product icon"
+              />
+            </div>
             {/* Product form to choose product options and add to basket*/}
             <form className={styles.form} onSubmit={addProduct}>
               {/* Product sizes option*/}
@@ -112,6 +107,7 @@ export default function Product({
                 <Size
                   product={product.size}
                   idProduct={product.id}
+                  icon={product.sizeIcon}
                   handleCheckedList={handleCheckedList}
                   checkedList={checkedList}
                 />
@@ -135,9 +131,46 @@ export default function Product({
                 Додати до кошика
               </button>
             </form>
+            {/* This div only for desktop version */}
+            <div className={styles.product_description_desktop}>
+              {/* Description */}
+              <p className={styles.description_desktop}>
+                {product.description}
+              </p>
+              {/* Ingredients */}
+              {product.ingredients && (
+                <p className={styles.ingredients_desktop}>
+                  <span>Склад: </span> {product.ingredients}
+                </p>
+              )}
+            </div>
           </div>
           {/* Product description */}
-          <p className={styles.product_description}>{product.description}</p>
+          <div className={styles.product_description}>
+            <p className={styles.description}>{product.description}</p>
+            {/* Ingredients */}
+            {product.ingredients && (
+              <p className={styles.ingredients}>
+                <span>Склад: </span> {product.ingredients}
+              </p>
+            )}
+            {/* Properties */}
+            {product.properties && product.properties.length !== 0 && (
+              <ul>
+                {product.properties?.map((p) => (
+                  <li className={styles.properties}>{p}</li>
+                ))}
+              </ul>
+            )}
+            {/* Additional info */}
+            {product.info && product.info.length !== 0 && (
+              <ul>
+                {product.info.map((i) => (
+                  <li className={styles.info}>{i}</li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
       )}
     </li>

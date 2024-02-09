@@ -1,14 +1,18 @@
-import styles from "./styles.module.scss";
-import uc from "../../icons/underconstruction.jpg";
+import data from "./boroshno.json";
+import { Item } from "../../shared.types";
+import ProductList from "../productList/ProductList";
 
-export default function Boroshno() {
+type Props = {
+  addItem: (item: Item) => void;
+};
+
+export default function Boroshno({ addItem }: Props) {
   return (
-    <div className={styles.container}>
-      <img
-        src={uc}
-        style={{ width: "300px", borderRadius: "20px", marginTop: "30px" }}
-        alt="сторінка знаходиться у розробці"
-      />
-    </div>
+    <ProductList
+      data={data}
+      addItem={addItem}
+      title={"Знежирене борошно"}
+      folderName={"boroshno"}
+    />
   );
 }

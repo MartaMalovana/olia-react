@@ -5,20 +5,13 @@ import AmountButtons from "../amountButtons/AmountButtons";
 import DeleteFromBasket from "../deleteFromBasket/DeleteFromBasket";
 import { Link } from "react-router-dom";
 import ModalOrder from "../modalOrder/ModalOrder";
+import { ProductItem, Item } from "../../shared.types";
+import Product from "../productList/Product";
 
 type Props = {
   changeBasketAmount: (itemId: number, operation: string) => void;
   clearBasket: () => void;
 };
-type ProductItem = {
-  id: number;
-  name: string;
-  size: [string, string][];
-  description: string;
-  icon: string;
-  photo: string;
-};
-type Item = { product: ProductItem; size: string; amount: number };
 type DeleteInfo = { index: number; operation: string };
 
 export default function Basket({ changeBasketAmount, clearBasket }: Props) {
@@ -49,7 +42,7 @@ export default function Basket({ changeBasketAmount, clearBasket }: Props) {
     );
   };
 
-  const price = (arr: [string, string][], size: string) => {
+  const price = (arr: string[][], size: string) => {
     const result = arr.find((el) => el[0] === size);
     if (result) return result[1];
   };
@@ -72,13 +65,25 @@ export default function Basket({ changeBasketAmount, clearBasket }: Props) {
               basketData.map(({ product, size, amount }, index) => (
                 <li key={index} className={styles.basket_item}>
                   <img
-                    src={`/images/product-photos/${product.photo}`}
+                    src={`/images/${product.collection}-photos/${product.photo}`}
                     className={styles.basket_image}
-                    alt="bottle with oil"
+                    alt={product.name}
                   />
                   <div>
                     <p className={styles.product_name}>{product.name}</p>
-                    <p>{size + "мл | " + price(product.size, size) + "грн"}</p>
+                    {product.collection === "boroshno" ? (
+                      <p>
+                        {(parseInt(size) >= 1000
+                          ? parseInt(size) / 1000 + "кг | "
+                          : size + "гр | ") +
+                          price(product.size, size) +
+                          "грн"}
+                      </p>
+                    ) : (
+                      <p>
+                        {size + "мл | " + price(product.size, size) + "грн"}
+                      </p>
+                    )}
                     <AmountButtons
                       amount={amount}
                       minus={() => changeBasketAmount(index, "minus")}

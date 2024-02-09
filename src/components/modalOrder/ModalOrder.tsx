@@ -13,17 +13,7 @@ import delivNova from "../../icons/delivNova.png";
 import delivUkr from "../../icons/delivUkr.png";
 import delivMeest from "../../icons/delivMeest.png";
 import Message from "../message/Message";
-
-type ProductItem = {
-  id: number;
-  name: string;
-  size: [string, string][];
-  description: string;
-  icon: string;
-  photo: string;
-};
-
-type Item = { product: ProductItem; size: string; amount: number };
+import { Item } from "../../shared.types";
 
 type Props = {
   products: Item[];

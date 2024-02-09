@@ -5,6 +5,7 @@ import "./styles/App.css";
 import SuspenseComponent from "./components/suspense/Suspense";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Menu from "./components/menu/Menu";
+import { Item } from "./shared.types";
 
 // LAZY IMPORTS
 const Header = lazy(() => import("./components/header/Header"));
@@ -22,17 +23,6 @@ const Basket = lazy(() => import("./components/basket/Basket"));
 const DogovirOfertu = lazy(
   () => import("./components/dogovirOfertu/DogovirOfertu")
 );
-
-// TYPES
-type ProductItem = {
-  id: number;
-  name: string;
-  size: [string, string][];
-  description: string;
-  icon: string;
-  photo: string;
-};
-type Item = { product: ProductItem; size: string; amount: number };
 
 // CONTEXT
 export const BasketData = createContext<Item[]>([]);
@@ -111,7 +101,7 @@ export function App() {
                 path="/boroshno"
                 element={
                   <SuspenseComponent>
-                    <Boroshno />
+                    <Boroshno addItem={addItem} />
                   </SuspenseComponent>
                 }
               ></Route>

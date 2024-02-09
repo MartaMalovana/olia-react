@@ -1,10 +1,13 @@
 import { ChangeEvent } from "react";
 import styles from "./styles.module.scss";
 import bottle from "../../icons/bottle.svg";
+import bag from "../../icons/bag.png";
+import jar from "../../icons/jar.png";
 
 type Props = {
   product: string[][];
   idProduct: number;
+  icon: string;
   checkedList: { id: number; sizeChecked: string }[] | [];
   handleCheckedList: (id: number, size: string) => void;
 };
@@ -12,9 +15,23 @@ type Props = {
 export default function Size({
   product,
   idProduct,
+  icon,
   handleCheckedList,
   checkedList,
 }: Props) {
+  const getSizeIcon = () => {
+    switch (icon) {
+      case "bottle":
+        return bottle;
+      case "jar":
+        return jar;
+      case "bag":
+        return bag;
+      default:
+        return bottle;
+    }
+  };
+
   const changeSize: (e: ChangeEvent<HTMLInputElement>, id: number) => void = (
     e,
     idProduct
@@ -44,13 +61,18 @@ export default function Size({
             <div className={styles.size_button}>
               <img
                 className={styles.bottle}
-                src={bottle}
+                src={getSizeIcon()}
                 width={30 + index * 7}
                 alt="bottle icon"
               />
             </div>
             <p className={styles.size_text}>
-              {size} <span>мл</span>
+              {size.length >= 4 ? parseInt(size) / 1000 : size}
+              {icon === "bag" ? (
+                <span>{size.length >= 4 ? "кг" : "гр"}</span>
+              ) : (
+                <span>{size.length >= 4 ? "л" : "мл"}</span>
+              )}
             </p>
             <p>
               {price} <span>грн</span>

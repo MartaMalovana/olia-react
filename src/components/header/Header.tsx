@@ -8,16 +8,7 @@ import Menu from "../menu/Menu";
 import Slogan from "../slogan/Slogan";
 import { BasketData } from "../../App";
 import emblem from "../../icons/emblem.png";
-
-type ProductItem = {
-  id: number;
-  name: string;
-  size: [string, string][];
-  description: string;
-  icon: string;
-  photo: string;
-};
-type Item = { product: ProductItem; size: string; amount: number };
+import { Item } from "../../shared.types";
 
 const Header = forwardRef((_props, ref: any) => {
   const [menuOpen, setMenuOpen] = useState(false);
