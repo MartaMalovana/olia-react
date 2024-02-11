@@ -98,7 +98,7 @@ export default function Product({
                 width={200}
                 height={200}
                 className={styles.photo}
-                alt="product icon"
+                alt={product.name}
               />
             </div>
             {/* Product form to choose product options and add to basket*/}
@@ -203,7 +203,7 @@ export default function Product({
             {showProperties && (
               <button
                 onClick={() => setShowProperties(false)}
-                className={styles.hideProperties}
+                className={styles.showPropertiesBtn}
               >
                 Згорнути опис
               </button>

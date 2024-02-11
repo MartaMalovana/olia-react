@@ -99,9 +99,9 @@ export default function Menu({ close }: Props) {
           </Link>
         </li>
         <li>
-          <Link to="/zhmuh">
+          <Link to="/gorihu">
             <div>
-              {pathname === "/zhmuh" && (
+              {pathname === "/gorihu" && (
                 <img
                   src={active}
                   width={50}

@@ -17,7 +17,7 @@ const Dostavka = lazy(() => import("./pages/dostavka-oplata/Dostavka"));
 const Podarynkovi = lazy(
   () => import("./pages/podarynkovi-naboru/Podarynkovi")
 );
-const Zhmuh = lazy(() => import("./pages/zhmuh/Zhmuh"));
+const Gorihu = lazy(() => import("./pages/gorihu/Gorihu"));
 const Kontaktu = lazy(() => import("./pages/kontaktu/Kontaktu"));
 const Basket = lazy(() => import("./pages/basket/Basket"));
 const DogovirOfertu = lazy(() => import("./pages/dogovirOfertu/DogovirOfertu"));
@@ -120,10 +120,10 @@ export function App() {
                 }
               ></Route>
               <Route
-                path="/zhmuh"
+                path="/gorihu"
                 element={
                   <SuspenseComponent>
-                    <Zhmuh />
+                    <Gorihu addItem={addItem} />
                   </SuspenseComponent>
                 }
               ></Route>

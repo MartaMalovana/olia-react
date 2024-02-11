@@ -35,7 +35,7 @@ export default function Home() {
             <img src={boroshno} alt="Link to page with flours" />
             <p className={styles.section_name}>Знежирене борошно</p>
           </Link>
-          <Link to="zhmuh" className={styles.section}>
+          <Link to="gorihu" className={styles.section}>
             <img src={nasinnya} alt="Link to page with oil cake" />
             <p className={styles.section_name}>Знежирене насіння та горіхи</p>
           </Link>
