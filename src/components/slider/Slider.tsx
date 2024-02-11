@@ -24,12 +24,12 @@ export default function Slider() {
             alt="product banner"
           />
         </div>
-        <div className={styles.slider_item}>
+        {/* <div className={styles.slider_item}>
           <img
             src={process.env.PUBLIC_URL + "/images/reklama/three.jpg"}
             alt="product banner"
           />
-        </div>
+        </div> */}
         <div className={styles.slider_item}>
           <img
             src={process.env.PUBLIC_URL + "/images/reklama/four.jpg"}

@@ -1,10 +1,10 @@
 import { useState, useContext } from "react";
 import { BasketData } from "../../App";
 import styles from "./styles.module.scss";
-import AmountButtons from "../amountButtons/AmountButtons";
-import DeleteFromBasket from "../deleteFromBasket/DeleteFromBasket";
+import AmountButtons from "../../components/amountButtons/AmountButtons";
+import DeleteFromBasket from "../../components/deleteFromBasket/DeleteFromBasket";
 import { Link } from "react-router-dom";
-import ModalOrder from "../modalOrder/ModalOrder";
+import ModalOrder from "../../components/modalOrder/ModalOrder";
 import { ProductItem, Item } from "../../shared.types";
 // import Product from "../productList/Product";
 

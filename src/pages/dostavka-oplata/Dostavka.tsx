@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import PageTitle from "../pageTitle/PageTitle";
+import PageTitle from "../../components/pageTitle/PageTitle";
 import nova from "../../icons/delivNova.png";
 import ukr from "../../icons/delivUkr.png";
 import meest from "../../icons/delivMeest.png";

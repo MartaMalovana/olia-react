@@ -1,6 +1,6 @@
 import data from "./boroshno.json";
 import { Item } from "../../shared.types";
-import ProductList from "../productList/ProductList";
+import ProductList from "../../components/productList/ProductList";
 
 type Props = {
   addItem: (item: Item) => void;

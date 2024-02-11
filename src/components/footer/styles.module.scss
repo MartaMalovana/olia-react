@@ -19,8 +19,8 @@
   background-color: $color-background;
   font-size: 16px;
 
-  @media screen and (min-width: 1190px) {
-    max-width: $width-desktop;
+  @media screen and (min-width: $width-desktop) {
+    max-width: $max-container;
     font-size: 24px;
     margin: 0 auto 20px;
   }

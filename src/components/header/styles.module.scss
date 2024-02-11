@@ -14,12 +14,8 @@
   align-items: center;
   background-color: $color-background;
 
-  // @media screen and (min-width: 765px) {
-  //   width: $width-tablet;
-  // }
-
-  @media screen and (min-width: 1190px) {
-    max-width: $width-desktop;
+  @media screen and (min-width: $width-desktop) {
+    max-width: $max-container;
     padding: 15px 0;
   }
 }
@@ -33,13 +29,13 @@
   background-color: $color-background;
   z-index: 99999;
 
-  @media screen and (min-width: 1190px) {
+  @media screen and (min-width: $width-desktop) {
     left: 10px;
     transform: none;
   }
 
   &_img {
-    @media screen and (min-width: 1190px) {
+    @media screen and (min-width: $width-desktop) {
       width: 130px;
       height: 130px;
     }
@@ -56,7 +52,7 @@
     background-color: transparent;
   }
   &_img {
-    @media screen and (min-width: 1190px) {
+    @media screen and (min-width: $width-desktop) {
       width: 40px;
       height: 40px;
     }
@@ -79,7 +75,7 @@
   border-radius: 50%;
   border: 1px solid black;
 
-  @media screen and (min-width: 1190px) {
+  @media screen and (min-width: $width-desktop) {
     width: 25px;
     height: 25px;
     font-size: 14px;

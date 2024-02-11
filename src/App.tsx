@@ -10,19 +10,17 @@ import { Item } from "./shared.types";
 // LAZY IMPORTS
 const Header = lazy(() => import("./components/header/Header"));
 const Footer = lazy(() => import("./components/footer/Footer"));
-const Home = lazy(() => import("./components/home/Home"));
-const Olia = lazy(() => import("./components/olia/Olia"));
-const Boroshno = lazy(() => import("./components/boroshno/Boroshno"));
-const Dostavka = lazy(() => import("./components/dostavka-oplata/Dostavka"));
+const Home = lazy(() => import("./pages/home/Home"));
+const Olia = lazy(() => import("./pages/olia/Olia"));
+const Boroshno = lazy(() => import("./pages/boroshno/Boroshno"));
+const Dostavka = lazy(() => import("./pages/dostavka-oplata/Dostavka"));
 const Podarynkovi = lazy(
-  () => import("./components/podarynkovi-naboru/Podarynkovi")
+  () => import("./pages/podarynkovi-naboru/Podarynkovi")
 );
-const Zhmuh = lazy(() => import("./components/zhmuh/Zhmuh"));
-const Kontaktu = lazy(() => import("./components/kontaktu/Kontaktu"));
-const Basket = lazy(() => import("./components/basket/Basket"));
-const DogovirOfertu = lazy(
-  () => import("./components/dogovirOfertu/DogovirOfertu")
-);
+const Zhmuh = lazy(() => import("./pages/zhmuh/Zhmuh"));
+const Kontaktu = lazy(() => import("./pages/kontaktu/Kontaktu"));
+const Basket = lazy(() => import("./pages/basket/Basket"));
+const DogovirOfertu = lazy(() => import("./pages/dogovirOfertu/DogovirOfertu"));
 
 // CONTEXT
 export const BasketData = createContext<Item[]>([]);

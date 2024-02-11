@@ -11,7 +11,7 @@
   border-radius: 30px;
   margin: 0 auto 20px;
   padding: 25px 10px 20px;
-  @media screen and (min-width: "1000px") {
+  @media screen and (min-width: $width-desktop) {
     margin: 0 0 20px 20px;
     padding: 10px;
   }
@@ -36,7 +36,7 @@
   font-size: 20px;
   font-weight: bold;
   text-align: center;
-  @media screen and (min-width: "1000px") {
+  @media screen and (min-width: $width-desktop) {
     font-size: 22px;
   }
 }
@@ -58,7 +58,7 @@ legend {
   text-transform: uppercase;
   width: fit-content;
   font-size: 16px;
-  @media screen and (min-width: "1000px") {
+  @media screen and (min-width: $width-desktop) {
     font-size: 20px;
   }
 }
@@ -70,7 +70,7 @@ legend {
   align-items: flex-start;
   margin-bottom: 20px;
 
-  @media screen and (min-width: "1000px") {
+  @media screen and (min-width: $width-desktop) {
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
@@ -80,7 +80,7 @@ legend {
     display: inline-block;
     width: 100%;
     font-size: 18px;
-    @media screen and (min-width: "1000px") {
+    @media screen and (min-width: $width-desktop) {
       width: 150px;
       font-size: 20px;
     }
@@ -96,7 +96,7 @@ legend {
   font-size: 18px;
   background-color: white;
 
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: $width-desktop) {
     font-size: 20px;
     width: 250px;
   }
@@ -120,7 +120,7 @@ input:-internal-autofill:selected {
   color: red;
   font-size: 18px;
 
-  @media screen and (min-width: "1000px") {
+  @media screen and (min-width: $width-desktop) {
     display: inline-block;
     margin-left: 20px;
     font-size: 20px;
@@ -130,7 +130,7 @@ input:-internal-autofill:selected {
 .input_phone {
   width: 100%;
   display: inline-flex;
-  @media screen and (min-width: "1000px") {
+  @media screen and (min-width: $width-desktop) {
     width: 250px;
     font-size: 22px;
   }
@@ -144,7 +144,7 @@ input:-internal-autofill:selected {
 .select {
   margin-bottom: 20px;
   font-size: 17px;
-  @media screen and (min-width: "1000px") {
+  @media screen and (min-width: $width-desktop) {
     font-size: 19px;
   }
 
@@ -160,7 +160,7 @@ input:-internal-autofill:selected {
 
 .label_select {
   font-size: 18px;
-  @media screen and (min-width: "1000px") {
+  @media screen and (min-width: $width-desktop) {
     font-size: 20px;
   }
 }
@@ -178,7 +178,7 @@ input:-internal-autofill:selected {
   box-shadow: rgba(99, 99, 99, 0.7) 0px 2px 8px 0px;
   font-size: 14px;
 
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: $width-desktop) {
     padding: 10px 30px;
     font-size: 16px;
   }
@@ -188,7 +188,7 @@ input:-internal-autofill:selected {
   margin: 5px 0 25px;
   display: flex;
   justify-content: space-between;
-  @media screen and (min-width: "1000px") {
+  @media screen and (min-width: $width-desktop) {
     justify-content: flex-start;
   }
 
@@ -197,14 +197,14 @@ input:-internal-autofill:selected {
     display: inline-flex;
     align-items: center;
     width: Calc((100% - 20px) / 3);
-    @media screen and (min-width: "1000px") {
+    @media screen and (min-width: $width-desktop) {
       width: auto;
       margin-right: 40px;
     }
 
     img {
       width: Calc(100% - 15px);
-      @media screen and (min-width: "1000px") {
+      @media screen and (min-width: $width-desktop) {
         width: 150px;
       }
     }
@@ -215,7 +215,7 @@ input:-internal-autofill:selected {
     width: 15px;
     height: 15px;
     margin: 0;
-    @media screen and (min-width: "1000px") {
+    @media screen and (min-width: $width-desktop) {
       width: 20px;
       height: 20px;
     }
@@ -256,7 +256,7 @@ input:-internal-autofill:selected {
     display: inline-block;
     width: 100%;
     font-size: 18px;
-    @media screen and (min-width: "1000px") {
+    @media screen and (min-width: $width-desktop) {
       font-size: 20px;
     }
   }
@@ -269,7 +269,7 @@ input:-internal-autofill:selected {
     font-family: "MyFont";
     font-size: 18px;
     background-color: white;
-    @media screen and (min-width: "1000px") {
+    @media screen and (min-width: $width-desktop) {
       font-size: 20px;
     }
   }
@@ -288,7 +288,7 @@ input:-internal-autofill:selected {
   font-family: "MyFont";
   width: 100%;
   padding: 2px 5px;
-  @media screen and (min-width: "1000px") {
+  @media screen and (min-width: $width-desktop) {
     font-size: 20px;
   }
 }
@@ -316,13 +316,13 @@ input:-internal-autofill:selected {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
-  @media screen and (min-width: "1000px") {
+  @media screen and (min-width: $width-desktop) {
     flex-direction: row;
   }
   label {
     width: 100%;
     margin-bottom: 10px;
-    @media screen and (min-width: "1000px") {
+    @media screen and (min-width: $width-desktop) {
       width: auto;
       margin-right: 50px;
     }
@@ -330,7 +330,7 @@ input:-internal-autofill:selected {
   &_item {
     margin-left: 10px;
     font-size: 18px;
-    @media screen and (min-width: "1000px") {
+    @media screen and (min-width: $width-desktop) {
       font-size: 19px;
     }
   }

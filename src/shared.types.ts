@@ -3,7 +3,8 @@ export type ProductItem = {
   collection: string;
   name: string;
   size: string[][];
-  description: string;
+  calories?: string;
+  description?: string;
   ingredients?: string;
   properties?: string[];
   info?: string[];

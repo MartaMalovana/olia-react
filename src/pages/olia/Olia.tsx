@@ -1,4 +1,4 @@
-import ProductList from "../productList/ProductList";
+import ProductList from "../../components/productList/ProductList";
 import data from "./olia.json";
 import { Item } from "../../shared.types";
 

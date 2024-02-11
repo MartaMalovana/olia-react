@@ -25,6 +25,7 @@ export default function Product({
 }: Props) {
   const [showInfo, setShowInfo] = useState(false);
   const [amount, setAmount] = useState(1);
+  const [showProperties, setShowProperties] = useState<boolean>(false);
 
   const addProduct = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -134,41 +135,78 @@ export default function Product({
             {/* This div only for desktop version */}
             <div className={styles.product_description_desktop}>
               {/* Description */}
-              <p className={styles.description_desktop}>
-                {product.description}
-              </p>
+              {product.description && (
+                <p className={styles.description_desktop}>
+                  {product.description}
+                </p>
+              )}
               {/* Ingredients */}
               {product.ingredients && (
                 <p className={styles.ingredients_desktop}>
-                  <span>Склад: </span> {product.ingredients}
+                  <span>Містить: </span> {product.ingredients}
+                </p>
+              )}
+              {product.collection === "boroshno" && product.calories && (
+                <p className={styles.calories_desktop}>
+                  <span>Калорійність: </span>
+                  {product.calories} Ккал на 100 г
                 </p>
               )}
             </div>
           </div>
           {/* Product description */}
           <div className={styles.product_description}>
-            <p className={styles.description}>{product.description}</p>
+            {product.description && (
+              <p className={styles.description}>{product.description}</p>
+            )}
             {/* Ingredients */}
             {product.ingredients && (
               <p className={styles.ingredients}>
-                <span>Склад: </span> {product.ingredients}
+                <span>Містить: </span> {product.ingredients}
               </p>
             )}
-            {/* Properties */}
-            {product.properties && product.properties.length !== 0 && (
-              <ul>
-                {product.properties?.map((p) => (
-                  <li className={styles.properties}>{p}</li>
-                ))}
-              </ul>
+            {product.collection === "boroshno" && product.calories && (
+              <p className={styles.calories}>
+                <span>Калорійність: </span>
+                {product.calories} Ккал на 100 гр
+              </p>
             )}
+
+            {!showProperties && (
+              <button
+                onClick={() => setShowProperties(true)}
+                className={styles.showPropertiesBtn}
+              >
+                Як впливає на організм {product.name}
+              </button>
+            )}
+
+            {/* Properties */}
+            {showProperties &&
+              product.properties &&
+              product.properties.length !== 0 && (
+                <ul>
+                  {product.properties?.map((p) => (
+                    <li className={styles.properties}>{p}</li>
+                  ))}
+                </ul>
+              )}
+
             {/* Additional info */}
-            {product.info && product.info.length !== 0 && (
+            {showProperties && product.info && product.info.length !== 0 && (
               <ul>
                 {product.info.map((i) => (
                   <li className={styles.info}>{i}</li>
                 ))}
               </ul>
+            )}
+            {showProperties && (
+              <button
+                onClick={() => setShowProperties(false)}
+                className={styles.hideProperties}
+              >
+                Згорнути опис
+              </button>
             )}
           </div>
         </div>

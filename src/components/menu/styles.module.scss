@@ -17,7 +17,7 @@
   overflow: hidden;
   box-shadow: rgba(99, 99, 99, 0.2) -5px 8px 10px 0px;
 
-  @media screen and (min-width: 1190px) {
+  @media screen and (min-width: $width-desktop) {
     position: static;
     width: 400px;
     height: auto;
@@ -64,7 +64,7 @@
     color: black;
     font-size: 24px;
 
-    @media screen and (min-width: 1190px) {
+    @media screen and (min-width: $width-desktop) {
       display: flex;
       align-items: center;
       padding: 12px 20px 12px 40px;
@@ -73,7 +73,7 @@
 
   li {
     height: 80px;
-    @media screen and (min-width: 1190px) {
+    @media screen and (min-width: $width-desktop) {
       height: 70px;
     }
   }

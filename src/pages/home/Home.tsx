@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import styles from "./styles.module.scss";
-import Slider from "../slider/Slider";
+import Slider from "../../components/slider/Slider";
 // import oil from "../../icons/oil-black.svg";
 import olia from "../../icons/olia.png";
 // import flour from "../../icons/flour-black.svg";
@@ -10,7 +10,7 @@ import boroshno from "../../icons/boroshno.png";
 import nasinnya from "../../icons/nasinnya.png";
 // import present from "../../icons/present-black.svg";
 import naboru from "../../icons/naboru.png";
-import Slogan from "../slogan/Slogan";
+import Slogan from "../../components/slogan/Slogan";
 
 export default function Home() {
   return (

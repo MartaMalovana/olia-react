@@ -6,7 +6,7 @@ import styles from "./styles.module.scss";
 // import pres from "%PUBLIC_URL%/images/kontaktu/pres.png";
 // import qr from "%PUBLIC_URL%/images/kontaktu/qr.png";
 // import surobuna from "%PUBLIC_URL%/images/kontaktu/surovuna.png";
-import PageTitle from "../pageTitle/PageTitle";
+import PageTitle from "../../components/pageTitle/PageTitle";
 
 export default function Kontaktu() {
   console.log(process.env);
