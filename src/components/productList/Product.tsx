@@ -203,7 +203,7 @@ export default function Product({
             {showProperties && (
               <button
                 onClick={() => setShowProperties(false)}
-                className={styles.showPropertiesBtn}
+                className={styles.hideProperties}
               >
                 Згорнути опис
               </button>
