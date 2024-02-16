@@ -177,7 +177,7 @@ export default function Product({
                 onClick={() => setShowProperties(true)}
                 className={styles.showPropertiesBtn}
               >
-                Як впливає на організм {product.name}
+                Детальніше
               </button>
             )}
 

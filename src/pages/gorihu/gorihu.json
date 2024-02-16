@@ -23,7 +23,7 @@
     ],
     "icon": "fistashkova.png",
     "sizeIcon": "bag",
-    "photo": ""
+    "photo": "fistashka.png"
   },
   {
     "id": 2,
@@ -49,7 +49,7 @@
     ],
     "icon": "kedrova.png",
     "sizeIcon": "bag",
-    "photo": ""
+    "photo": "kedr.png"
   },
   {
     "id": 3,
@@ -76,7 +76,7 @@
     ],
     "icon": "keshju.png",
     "sizeIcon": "bag",
-    "photo": ""
+    "photo": "keshju.png"
   },
   {
     "id": 4,
@@ -101,7 +101,7 @@
     ],
     "icon": "chia.png",
     "sizeIcon": "bag",
-    "photo": ""
+    "photo": "chia.png"
   },
   {
     "id": 5,
@@ -125,8 +125,8 @@
     "info": [
       "Суміш додають в салати, холодні закуски, вітамінні суміші та смузі."
     ],
-    "icon": "",
+    "icon": "mix.png",
     "sizeIcon": "bag",
-    "photo": ""
+    "photo": "mix.png"
   }
 ]
