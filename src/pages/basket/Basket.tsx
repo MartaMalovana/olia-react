@@ -71,19 +71,7 @@ export default function Basket({ changeBasketAmount, clearBasket }: Props) {
                   />
                   <div>
                     <p className={styles.product_name}>{product.name}</p>
-                    {product.collection === "boroshno" ? (
-                      <p>
-                        {(parseInt(size) >= 1000
-                          ? parseInt(size) / 1000 + "кг | "
-                          : size + "гр | ") +
-                          price(product.size, size) +
-                          "грн"}
-                      </p>
-                    ) : (
-                      <p>
-                        {size + "мл | " + price(product.size, size) + "грн"}
-                      </p>
-                    )}
+                    <p>{size + " | " + price(product.size, size) + " грн"}</p>
                     <AmountButtons
                       amount={amount}
                       minus={() => changeBasketAmount(index, "minus")}

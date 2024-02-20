@@ -101,6 +101,7 @@ export default function Product({
                 alt={product.name}
               />
             </div>
+
             {/* Product form to choose product options and add to basket*/}
             <form className={styles.form} onSubmit={addProduct}>
               {/* Product sizes option*/}
@@ -108,7 +109,7 @@ export default function Product({
                 <Size
                   product={product.size}
                   idProduct={product.id}
-                  icon={product.sizeIcon}
+                  icon={product.sizeIcon ? product.sizeIcon : ""}
                   handleCheckedList={handleCheckedList}
                   checkedList={checkedList}
                 />
@@ -132,6 +133,7 @@ export default function Product({
                 Додати до кошика
               </button>
             </form>
+
             {/* This div only for desktop version */}
             <div className={styles.product_description_desktop}>
               {/* Description */}
@@ -154,17 +156,20 @@ export default function Product({
               )}
             </div>
           </div>
+
           {/* Product description */}
           <div className={styles.product_description}>
             {product.description && (
               <p className={styles.description}>{product.description}</p>
             )}
+
             {/* Ingredients */}
             {product.ingredients && (
               <p className={styles.ingredients}>
                 <span>Містить: </span> {product.ingredients}
               </p>
             )}
+
             {product.collection === "boroshno" && product.calories && (
               <p className={styles.calories}>
                 <span>Калорійність: </span>

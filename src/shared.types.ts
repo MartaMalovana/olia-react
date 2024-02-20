@@ -8,8 +8,8 @@ export type ProductItem = {
   ingredients?: string;
   properties?: string[];
   info?: string[];
-  icon: string;
-  sizeIcon: string;
+  icon?: string;
+  sizeIcon?: string;
   photo: string;
 };
 

@@ -44,7 +44,7 @@
     display: flex;
     align-items: center;
     width: 100%;
-    height: 75px;
+    min-height: 75px;
     padding: 0 55px 0 15px;
     border-radius: 30px;
     border-bottom-left-radius: 0px;
@@ -65,6 +65,7 @@
 
   .product_name {
     font-size: 20px;
+    margin: 5px 0;
     @media screen and (min-width: 765px) {
       font-size: 24px;
       margin: 0;
@@ -143,6 +144,14 @@
   }
 }
 
+.photo_form_container_naboru {
+  @extend .photo_form_container;
+  position: relative;
+  @media screen and (min-width: 765px) {
+    display: flex;
+  }
+}
+
 .img_container {
   width: 40%;
   height: auto;
@@ -154,13 +163,60 @@
   }
 }
 
+.img_container_naboru {
+  @extend .img_container;
+  position: relative;
+  width: 60%;
+  @media screen and (min-width: 500px) {
+    width: 350px;
+  }
+
+  .discount {
+    position: absolute;
+    content: "";
+    top: -15px;
+    right: -15px;
+    width: 60px;
+    height: 60px;
+    background-image: url("../../icons/discount.png");
+    background-size: contain;
+    @media screen and (min-width: 500px) {
+      top: -20px;
+      right: -25px;
+      width: 90px;
+      height: 90px;
+    }
+
+    div {
+      position: absolute;
+      content: "";
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(340deg);
+
+      span {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: $font-decor;
+        @media screen and (min-width: 500px) {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
+
 .photo {
   background-color: $color-olive;
   border-radius: 0 20px 0 20px;
   width: 100%;
+  min-width: 100%;
   height: 100%;
-  min-height: 100%;
+  min-height: 100px;
   object-fit: cover;
+  @media screen and (min-width: 500px) {
+    min-height: 100%;
+  }
 }
 
 .form {
@@ -174,11 +230,24 @@
   }
 }
 
+// .form_naboru {
+//   @extend .form;
+//   flex-direction: row;
+// }
+
 .sizes_container {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   margin: 0 0 10px 0;
+}
+
+.sizes_container_naboru {
+  @extend .sizes_container;
+  margin-bottom: 0;
+  @media screen and (min-width: 500px) {
+    margin-top: 50px;
+  }
 }
 
 .sizes_item {
@@ -217,6 +286,32 @@
   }
 }
 
+.sizes_item_naboru {
+  @extend .sizes_item;
+
+  p {
+    margin: 0;
+  }
+
+  &.size_text {
+    font-size: 17px;
+    @media screen and (min-width: $width-desktop) {
+      font-size: 22px;
+    }
+  }
+}
+
+.newPrice {
+  font-family: $font-decor;
+  font-size: 30px !important;
+  color: rgb(243, 38, 38);
+  @media screen and (min-width: $width-desktop) {
+    display: block;
+    font-size: 35px;
+    margin-bottom: 10px;
+  }
+}
+
 .size_button {
   width: fit-content;
   height: auto;
@@ -237,12 +332,21 @@
 }
 
 .size_input:checked + .sizes_item {
-  // border: 1px solid black;
   background-color: $color-olive;
+}
+
+.size_input:checked + .sizes_item_naboru {
+  background-color: transparent;
 }
 
 .size_input:checked + .sizes_item .size_text {
   color: rgb(136, 71, 5);
+}
+
+.size_input:checked + .sizes_item .size_text_oldprice {
+  color: black;
+  font-weight: bold;
+  text-decoration: line-through;
 }
 
 .amount_input {
@@ -265,9 +369,20 @@
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   font-size: 12px;
+  &:hover {
+    background-color: $color-gold;
+  }
   @media screen and (min-width: $width-desktop) {
     font-size: 14px;
   }
+}
+
+.submit_button_naboru {
+  @extend .submit_button;
+  position: absolute;
+  content: "";
+  bottom: -50px;
+  right: 0;
 }
 
 .product_description {
@@ -320,15 +435,33 @@
     }
   }
 
-  .properties {
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 20px;
-    @media screen and (min-width: $width-desktop) {
-      margin-bottom: 10px;
+  .info {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+      @media screen and (min-width: $width-desktop) {
+        margin-bottom: 10px;
+      }
+    }
+    &:first-child {
+      margin-top: 20px;
     }
   }
-  .properties::before {
+}
+
+.product_description_naboru {
+  @extend .product_description;
+  margin-top: 70px;
+}
+
+.properties {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  @media screen and (min-width: $width-desktop) {
+    margin-bottom: 10px;
+  }
+
+  &::before {
     position: absolute;
     content: "";
     top: -2px;
@@ -343,18 +476,6 @@
       width: 25px;
       height: 25px;
       left: -2px;
-    }
-  }
-
-  .info {
-    &:not(:last-child) {
-      margin-bottom: 20px;
-      @media screen and (min-width: $width-desktop) {
-        margin-bottom: 10px;
-      }
-    }
-    &:first-child {
-      margin-top: 20px;
     }
   }
 }

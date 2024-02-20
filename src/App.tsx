@@ -115,7 +115,7 @@ export function App() {
                 path="/podarynkovi-naboru"
                 element={
                   <SuspenseComponent>
-                    <Podarynkovi />
+                    <Podarynkovi addItem={addItem} />
                   </SuspenseComponent>
                 }
               ></Route>

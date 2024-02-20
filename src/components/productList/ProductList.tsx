@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Product from "../productList/Product";
+import ProductNaboru from "./ProductNaboru";
 import styles from "./styles.module.scss";
 import Message from "../message/Message";
 import PageTitle from "../pageTitle/PageTitle";
@@ -48,19 +49,33 @@ export default function ProductList({
         <PageTitle text={title} />
         {/* Product list */}
         <ul className={styles.product_list}>
-          {data.map((product) => (
-            /* Product item */
-            <Product
-              product={product}
-              key={product.id}
-              addItem={addItem}
-              success={() => setSuccess(true)}
-              errorMessage={() => setError(true)}
-              handleCheckedList={handleCheckedList}
-              checkedList={checkedList}
-              folderName={folderName}
-            />
-          ))}
+          {title === "Набори"
+            ? data.map((product) => (
+                /* Product item */
+                <ProductNaboru
+                  product={product}
+                  key={product.id}
+                  addItem={addItem}
+                  success={() => setSuccess(true)}
+                  errorMessage={() => setError(true)}
+                  handleCheckedList={handleCheckedList}
+                  checkedList={checkedList}
+                  folderName={folderName}
+                />
+              ))
+            : data.map((product) => (
+                /* Product item */
+                <Product
+                  product={product}
+                  key={product.id}
+                  addItem={addItem}
+                  success={() => setSuccess(true)}
+                  errorMessage={() => setError(true)}
+                  handleCheckedList={handleCheckedList}
+                  checkedList={checkedList}
+                  folderName={folderName}
+                />
+              ))}
         </ul>
       </main>
 

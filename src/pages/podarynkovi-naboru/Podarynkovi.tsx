@@ -1,14 +1,19 @@
 import styles from "./styles.module.scss";
-import uc from "../../icons/underconstruction.jpg";
+import ProductList from "../../components/productList/ProductList";
+import data from "./naboru.json";
+import { Item } from "../../shared.types";
 
-export default function Podarynkovi() {
+type Props = {
+  addItem: (item: Item) => void;
+};
+
+export default function Podarynkovi({ addItem }: Props) {
   return (
-    <div className={styles.container}>
-      <img
-        src={uc}
-        style={{ width: "300px", borderRadius: "20px", marginTop: "30px" }}
-        alt="сторінка знаходиться у розробці"
-      />
-    </div>
+    <ProductList
+      data={data}
+      addItem={addItem}
+      title={"Набори"}
+      folderName={"naboru"}
+    />
   );
 }

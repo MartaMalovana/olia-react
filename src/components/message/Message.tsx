@@ -51,7 +51,7 @@ export default function Message({
 
   const handleClick = () => {
     close();
-    if (closeOrder && clearBasket) {
+    if (type === "submitFormSuccess" && closeOrder && clearBasket) {
       closeOrder();
       clearBasket();
       window.scroll({

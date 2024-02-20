@@ -8,12 +8,14 @@ import "react-international-phone/style.css";
 import styles from "./styles.module.scss";
 import apiNovaPoshta from "../../api/apiNovaPoshta";
 import apiMeest from "../../api/apiMeest";
+import apiNewOrder from "../../api/apiNewOrder";
 import dataConvertNovaposhta from "../../utils/dataConverterSelect";
 import delivNova from "../../icons/delivNova.png";
 import delivUkr from "../../icons/delivUkr.png";
 import delivMeest from "../../icons/delivMeest.png";
 import Message from "../message/Message";
 import { Item } from "../../shared.types";
+import newOrderDataFormatter from "../../utils/newOrderDataFormatter";
 
 type Props = {
   products: Item[];
@@ -87,7 +89,7 @@ export default function ModalOrder({
       comment: Yup.string(),
       connect: Yup.array().of(Yup.string()),
     }),
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       let newData = {
         name: values.firstName,
         lastName: values.lastName,
@@ -97,11 +99,15 @@ export default function ModalOrder({
         warehouse: values.postIndex.label,
         comment: values.comment,
         connect: values.connect,
-        basket: products,
+        basket: JSON.stringify(newOrderDataFormatter(products)),
       };
-      console.log(newData);
-      setMessage("submitFormSuccess");
-      // alert(JSON.stringify({ newData }, null, 2));
+      const result: any = apiNewOrder(newData);
+      result
+        .then(() => setMessage("submitFormSuccess"))
+        .catch((error: any) => {
+          console.log(error);
+          setMessage("submitFormError");
+        });
     },
   });
 
@@ -149,19 +155,6 @@ export default function ModalOrder({
       .catch(console.log);
   }, [formik.values.meestCity, formik]);
 
-  const aaa = (e: any) => {
-    e.preventDefault();
-    console.log(formik);
-    try {
-      formik.handleSubmit();
-      // close();
-      // clearBasket();
-    } catch (error) {
-      console.log(error);
-      setMessage("submitFormError");
-    }
-  };
-
   const handleChangePost = (e: any) => {
     formik.setFieldValue("address", { value: "", label: "" });
     formik.setFieldValue("postIndex", { value: "", label: "" });
@@ -188,7 +181,7 @@ export default function ModalOrder({
   return (
     <div className={styles.container}>
       <p className={styles.title}>Оформлення замовлення</p>
-      <form className={styles.form} onSubmit={aaa}>
+      <form className={styles.form} onSubmit={formik.handleSubmit}>
         {/* CLIENT INFO (NAME, LAST NAME, PHONE NUMBER) */}
         <fieldset>
           <legend>Дані отримувача</legend>

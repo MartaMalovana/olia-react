@@ -5,6 +5,7 @@ import bag from "../../icons/bag.png";
 import jar from "../../icons/jar.png";
 
 type Props = {
+  collection?: string;
   product: string[][];
   idProduct: number;
   icon: string;
@@ -13,6 +14,7 @@ type Props = {
 };
 
 export default function Size({
+  collection,
   product,
   idProduct,
   icon,
@@ -28,7 +30,7 @@ export default function Size({
       case "bag":
         return bag;
       default:
-        return bottle;
+        return "";
     }
   };
 
@@ -41,7 +43,7 @@ export default function Size({
 
   return (
     <>
-      {product.map(([size, price], index) => (
+      {product.map(([size, price, oldPrice], index) => (
         <div key={index}>
           <input
             type="radio"
@@ -57,24 +59,34 @@ export default function Size({
             }
             onChange={(e) => changeSize(e, idProduct)}
           ></input>
-          <label className={styles.sizes_item} htmlFor={size + idProduct}>
-            <div className={styles.size_button}>
-              <img
-                className={styles.bottle}
-                src={getSizeIcon()}
-                width={30 + index * 7}
-                alt="bottle icon"
-              />
-            </div>
+          <label
+            className={
+              collection === "naboru"
+                ? styles.sizes_item_naboru
+                : styles.sizes_item
+            }
+            htmlFor={size + idProduct}
+          >
+            {icon !== "" && (
+              <div className={styles.size_button}>
+                <img
+                  className={styles.bottle}
+                  src={getSizeIcon()}
+                  width={30 + index * 7}
+                  alt="bottle icon"
+                />
+              </div>
+            )}
             <p className={styles.size_text}>
-              {size.length >= 4 ? parseInt(size) / 1000 : size}
-              {icon === "bag" ? (
-                <span>{size.length >= 4 ? "кг" : "гр"}</span>
+              {collection && collection === "naboru" ? (
+                <span className={styles.size_text_oldprice}>
+                  {oldPrice + " грн"}
+                </span>
               ) : (
-                <span>{size.length >= 4 ? "л" : "мл"}</span>
+                size
               )}
             </p>
-            <p>
+            <p className={collection === "naboru" ? styles.newPrice : ""}>
               {price} <span>грн</span>
             </p>
           </label>
