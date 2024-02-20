@@ -1,4 +1,3 @@
-import styles from "./styles.module.scss";
 import ProductList from "../../components/productList/ProductList";
 import data from "./naboru.json";
 import { Item } from "../../shared.types";
