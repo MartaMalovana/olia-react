@@ -44,6 +44,12 @@ export default function Footer() {
               />
             </a>
           </div>
+          <a
+            href="viber://chat?number=%2B380985583388"
+            className={styles.viber}
+          >
+            <div className={styles.viber_icon}></div>Viber
+          </a>
           <a href="tel:+380985583388">+380985583388</a>
           <a href="mailto:matolli_oil@outlook.com">matolli_oil@outlook.com</a>
         </div>
