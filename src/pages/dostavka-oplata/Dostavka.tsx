@@ -25,8 +25,14 @@ export default function Dostavka() {
               </a>
             </li>
             <li>
-              по телефону (пн-пт 10:00 - 18:00, сб 10:00 - 15:00) або Viber,
-              Telegram, WhatsApp. Менеджер Matolli{" "}
+              по телефону (пн-пт 10:00 - 18:00, сб 10:00 - 15:00) або
+              <a
+                href="viber://chat?number=%2B380985583388"
+                className={styles.viber}
+              >
+                <div className={styles.viber_icon}></div> Viber
+              </a>
+              , Telegram, WhatsApp. Менеджер Matolli{" "}
               <a href="tel:+380985583388">+380985583388</a>
             </li>
             <li>

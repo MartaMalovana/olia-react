@@ -83,3 +83,28 @@
     }
   }
 }
+
+.viber {
+  position: relative;
+  padding-left: 25px;
+  @media screen and (min-width: $width-desktop) {
+    padding-left: 33px;
+  }
+
+  &_icon {
+    position: absolute;
+    content: "";
+    bottom: 2px;
+    left: 0;
+    background-image: url("../../icons/viber.svg");
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    @media screen and (min-width: $width-desktop) {
+      width: 30px;
+      height: 30px;
+      bottom: -1px;
+    }
+  }
+}

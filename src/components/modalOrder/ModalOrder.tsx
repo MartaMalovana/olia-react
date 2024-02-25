@@ -97,13 +97,17 @@ export default function ModalOrder({
         post: values.post,
         city: values.address.label,
         warehouse: values.postIndex.label,
-        comment: values.comment,
+        comment: values.comment ? values.comment : "no comment",
         connect: values.connect,
-        basket: JSON.stringify(newOrderDataFormatter(products)),
+        basket: newOrderDataFormatter(products),
       };
       const result: any = apiNewOrder(newData);
       result
-        .then(() => setMessage("submitFormSuccess"))
+        .then((data: any) => {
+          console.log(data);
+          if (data.message) throw new Error(data.message);
+          setMessage("submitFormSuccess");
+        })
         .catch((error: any) => {
           console.log(error);
           setMessage("submitFormError");

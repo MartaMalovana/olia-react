@@ -148,12 +148,28 @@ export default function Product({
                   <span>Містить: </span> {product.ingredients}
                 </p>
               )}
-              {product.collection === "boroshno" && product.calories && (
+              {product.calories && (
                 <p className={styles.calories_desktop}>
                   <span>Калорійність: </span>
                   {product.calories} Ккал на 100 г
                 </p>
               )}
+              {!showProperties && (
+                <button
+                  onClick={() => setShowProperties(true)}
+                  className={styles.showPropertiesBtn_desktop}
+                >
+                  <span>Детальніше</span>
+                </button>
+              )}
+              {/* {showProperties && (
+                <button
+                  onClick={() => setShowProperties(false)}
+                  className={styles.hideProperties_desktop}
+                >
+                  Згорнути опис
+                </button>
+              )} */}
             </div>
           </div>
 
@@ -170,7 +186,7 @@ export default function Product({
               </p>
             )}
 
-            {product.collection === "boroshno" && product.calories && (
+            {product.calories && (
               <p className={styles.calories}>
                 <span>Калорійність: </span>
                 {product.calories} Ккал на 100 гр

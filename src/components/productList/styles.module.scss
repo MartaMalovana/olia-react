@@ -166,9 +166,9 @@
 .img_container_naboru {
   @extend .img_container;
   position: relative;
-  width: 60%;
+  width: 50%;
   @media screen and (min-width: 500px) {
-    width: 350px;
+    width: 300px;
   }
 
   .discount {
@@ -176,15 +176,15 @@
     content: "";
     top: -15px;
     right: -15px;
-    width: 60px;
-    height: 60px;
-    background-image: url("../../icons/discount.png");
+    width: 90px;
+    height: 90px;
     background-size: contain;
     @media screen and (min-width: 500px) {
-      top: -20px;
-      right: -25px;
-      width: 90px;
-      height: 90px;
+      top: -22px;
+      right: -30px;
+      background-image: url("../../icons/discount.png");
+      // width: 90px;
+      // height: 90px;
     }
 
     div {
@@ -195,11 +195,13 @@
       transform: translate(-50%, -50%) rotate(340deg);
 
       span {
-        font-size: 18px;
+        // font-size: 18px;
         font-weight: bold;
         font-family: $font-decor;
+        color: transparent;
         @media screen and (min-width: 500px) {
-          font-size: 24px;
+          font-size: 16px;
+          color: black;
         }
       }
     }
@@ -230,10 +232,11 @@
   }
 }
 
-// .form_naboru {
-//   @extend .form;
-//   flex-direction: row;
-// }
+.form_naboru {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .sizes_container {
   display: flex;
@@ -303,11 +306,11 @@
 
 .newPrice {
   font-family: $font-decor;
-  font-size: 30px !important;
+  font-size: 36px !important;
   color: rgb(243, 38, 38);
   @media screen and (min-width: $width-desktop) {
     display: block;
-    font-size: 35px;
+    font-size: 35px !important;
     margin-bottom: 10px;
   }
 }
@@ -337,6 +340,13 @@
 
 .size_input:checked + .sizes_item_naboru {
   background-color: transparent;
+}
+
+.size_input:checked + .sizes_item_naboru .size_text {
+  font-size: 22px;
+  @media screen and (min-width: $width-desktop) {
+    font-size: 26px;
+  }
 }
 
 .size_input:checked + .sizes_item .size_text {
@@ -379,10 +389,6 @@
 
 .submit_button_naboru {
   @extend .submit_button;
-  position: absolute;
-  content: "";
-  bottom: -50px;
-  right: 0;
 }
 
 .product_description {
@@ -448,9 +454,17 @@
   }
 }
 
+.product_description_desktop_naboru {
+  @extend .product_description_desktop;
+  flex-basis: 0%;
+  @media screen and (min-width: $width-desktop) {
+    flex-basis: 40%;
+  }
+}
+
 .product_description_naboru {
   @extend .product_description;
-  margin-top: 70px;
+  margin-top: 10px;
 }
 
 .properties {
@@ -487,13 +501,14 @@
   border: 1px solid transparent;
   text-align: start;
   font-family: $font-decor;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
   color: black;
   // display: none;
   @media screen and (min-width: $width-desktop) {
-    padding: 3px 40px 3px 5px;
-    font-size: 24px;
+    // padding: 3px 40px 3px 5px;
+    // font-size: 24px;
+    display: none;
   }
 
   &::before {
@@ -508,11 +523,24 @@
   }
 }
 
+.showPropertiesBtn_desktop {
+  @extend .showPropertiesBtn;
+  display: none;
+  @media screen and (min-width: $width-desktop) {
+    display: block;
+  }
+}
+
 .hideProperties {
   @extend .showPropertiesBtn;
   &::before {
     background-image: url("../../icons/arrow-open.svg");
     transform: rotate(180deg) translateY(40%);
+  }
+  @media screen and (min-width: $width-desktop) {
+    display: block;
+    width: 100%;
+    text-align: end;
   }
 }
 
@@ -529,7 +557,8 @@
 }
 
 .ingredients_desktop,
-.calories_desktop {
+.calories_desktop,
+.showPropertiesBtn_desktop {
   color: black;
   font-size: 16px;
   display: none;

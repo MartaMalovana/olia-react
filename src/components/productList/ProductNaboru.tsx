@@ -113,7 +113,7 @@ export default function ProductNaboru({
           </form>
 
           {/* This div only for desktop version */}
-          <div className={styles.product_description_desktop}>
+          <div className={styles.product_description_desktop_naboru}>
             {/* Description */}
             {product.description && (
               <p className={styles.description_desktop}>
