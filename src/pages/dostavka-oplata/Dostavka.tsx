@@ -30,7 +30,7 @@ export default function Dostavka() {
                 href="viber://chat?number=%2B380985583388"
                 className={styles.viber}
               >
-                <div className={styles.viber_icon}></div> Viber
+                <div className={styles.viber_icon}></div>Viber
               </a>
               , Telegram, WhatsApp. Менеджер Matolli{" "}
               <a href="tel:+380985583388">+380985583388</a>
