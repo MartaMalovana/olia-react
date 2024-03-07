@@ -22,6 +22,7 @@ type Props = {
   close: () => void;
   showOrderButton: () => void;
   clearBasket: () => void;
+  loader: (a: boolean) => void;
 };
 
 export default function ModalOrder({
@@ -29,6 +30,7 @@ export default function ModalOrder({
   close,
   showOrderButton,
   clearBasket,
+  loader,
 }: Props) {
   const [message, setMessage] = useState<string>("");
 
@@ -101,6 +103,7 @@ export default function ModalOrder({
         connect: values.connect,
         basket: newOrderDataFormatter(products),
       };
+      loader(true);
       const result: any = apiNewOrder(newData);
       result
         .then((data: any) => {
@@ -111,7 +114,8 @@ export default function ModalOrder({
         .catch((error: any) => {
           console.log(error);
           setMessage("submitFormError");
-        });
+        })
+        .finally(() => loader(false));
     },
   });
 

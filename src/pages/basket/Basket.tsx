@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import ModalOrder from "../../components/modalOrder/ModalOrder";
 import { ProductItem, Item } from "../../shared.types";
 // import Product from "../productList/Product";
+import { Circles } from "react-loader-spinner";
 
 type Props = {
   changeBasketAmount: (itemId: number, operation: string) => void;
@@ -23,6 +24,7 @@ export default function Basket({ changeBasketAmount, clearBasket }: Props) {
   });
   const [orderForm, setOrderForm] = useState(false);
   const [orderButton, setOrderButton] = useState(true);
+  const [loader, setLoader] = useState<boolean>(false);
 
   const totalPrice: () => number = () => {
     return basketData.reduce(
@@ -53,6 +55,10 @@ export default function Basket({ changeBasketAmount, clearBasket }: Props) {
       return data;
     });
     setShowDelete(true);
+  };
+
+  const loaderSwitch = (a: boolean) => {
+    setLoader(a);
   };
 
   return (
@@ -134,7 +140,30 @@ export default function Basket({ changeBasketAmount, clearBasket }: Props) {
           close={() => setOrderForm(false)}
           showOrderButton={() => setOrderButton(!orderButton)}
           clearBasket={clearBasket}
+          loader={(a) => loaderSwitch(a)}
         />
+      )}
+
+      {loader && (
+        <div className={styles.loader}>
+          {" "}
+          <Circles
+            height="50"
+            width="50"
+            color="black"
+            ariaLabel="circles-loading"
+            wrapperStyle={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              height: "100vh",
+              // paddingTop: "100px",
+            }}
+            wrapperClass="loader"
+            visible={true}
+          />
+        </div>
       )}
     </div>
   );
