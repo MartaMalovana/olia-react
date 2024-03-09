@@ -24,7 +24,7 @@
     ],
     "icon": "kokosova.png",
     "sizeIcon": "jar",
-    "photo": "1.jpg"
+    "photo": "1h.jpg"
   },
   {
     "id": 2,
@@ -52,7 +52,7 @@
     ],
     "icon": "gxi.png",
     "sizeIcon": "jar",
-    "photo": "2.jpg"
+    "photo": "1hb.jpg"
   },
   {
     "id": 3,
@@ -79,7 +79,7 @@
     ],
     "icon": "lliana.png",
     "sizeIcon": "bottle",
-    "photo": "3.jpg"
+    "photo": "600.png"
   },
   {
     "id": 4,
@@ -107,7 +107,7 @@
     ],
     "icon": "chornui-kmun.png",
     "sizeIcon": "bottle",
-    "photo": "4.jpg"
+    "photo": ""
   },
   {
     "id": 5,
@@ -442,7 +442,7 @@
     ],
     "icon": "ruzhieva.png",
     "sizeIcon": "bottle",
-    "photo": "1.jpg"
+    "photo": "16.jpg"
   },
   {
     "id": 17,
