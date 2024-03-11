@@ -52,7 +52,7 @@ export default function ProductNaboru({
         className={`${styles.product_preview} ${styles.product_preview_active}`}
       >
         {/* Product name */}
-        <p className={styles.product_name}>{"Набір " + product.name}</p>
+        <p className={styles.product_name}>{product.name}</p>
       </div>
 
       {/* Product info (photo, description and the form to add product to basket) */}

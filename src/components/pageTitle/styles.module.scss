@@ -1,22 +1,21 @@
 @import "../../styles/variables.module.scss";
+@import "../../styles/mixins.scss";
 
 .page_title {
-  opacity: 0;
   position: absolute;
   top: -30px;
   right: 0;
   z-index: -99;
+  @include display(flex, center, center);
   width: 100%;
   height: 50px;
   margin-bottom: 20px;
   padding: 0 20px;
-  background-color: $color-gold;
-  border-bottom-left-radius: 50px;
-  text-transform: uppercase;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  opacity: 0;
   font-size: 20px;
+  text-transform: uppercase;
+  border-bottom-left-radius: 50px;
+  background-color: $color-gold;
   @media screen and (min-width: $width-desktop) {
     opacity: 1;
   }

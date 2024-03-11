@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { useState, createContext, lazy, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import "./styles/App.css";
+import "./styles/App.scss";
 import SuspenseComponent from "./components/suspense/Suspense";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Menu from "./components/menu/Menu";

@@ -1,29 +1,27 @@
 @import "../../styles/variables.module.scss";
+@import "../../styles/mixins.scss";
 
 .navigation {
   position: absolute;
   top: 130%;
   right: 0px;
+  z-index: 9999;
   width: 100%;
   margin: 0 auto;
+  overflow: hidden;
   background-color: $color-background;
-  // outline: 1px solid red;
-  z-index: 9999;
-  border-radius: 10px;
   border-top-right-radius: 0px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 0px;
-  overflow: hidden;
-  box-shadow: rgba(99, 99, 99, 0.2) -5px 8px 10px 0px;
+  box-shadow: $shadow-2;
 
   @media screen and (min-width: $width-desktop) {
     position: static;
     width: 400px;
-    height: auto;
+    height: fit-content;
     margin-top: 30px;
     box-shadow: none;
-    height: fit-content;
   }
 
   li:nth-child(2n) {
@@ -54,15 +52,13 @@
   }
 
   div {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    @include display(flex, flex-start, center);
     height: Calc(100% + 2px);
+    padding: 12px 40px;
+    font-size: 24px;
     border-top-right-radius: 40px;
     border-top-left-radius: 40px;
-    padding: 12px 40px;
     color: black;
-    font-size: 24px;
 
     @media screen and (min-width: $width-desktop) {
       display: flex;

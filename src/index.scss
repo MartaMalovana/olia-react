@@ -1,0 +1,40 @@
+@import "./styles/variables.module.scss";
+
+@font-face {
+  font-family: "MyFont";
+  src: url("./styles/crimson-font.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: "MyFont", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: black;
+  background-color: $color-background;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  transition: $hover-1;
+  &:active {
+    transform: scale(0.9);
+  }
+}

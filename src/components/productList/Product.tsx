@@ -92,7 +92,13 @@ export default function Product({
           {/* Container with product photo and form to choose product */}
           <div className={styles.photo_form_container}>
             {/* Product photo*/}
-            <div className={styles.img_container}>
+            <div
+              className={
+                product.collection === "olia"
+                  ? styles.img_container_olia
+                  : styles.img_container
+              }
+            >
               <img
                 src={`/images/${folderName}-photos/${product.photo}`}
                 width={200}

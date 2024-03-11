@@ -24,7 +24,7 @@
     ],
     "icon": "kokosova.png",
     "sizeIcon": "jar",
-    "photo": "1.jpg"
+    "photo": ""
   },
   {
     "id": 2,
@@ -52,7 +52,7 @@
     ],
     "icon": "gxi.png",
     "sizeIcon": "jar",
-    "photo": "1a.jpg"
+    "photo": ""
   },
   {
     "id": 3,
@@ -79,7 +79,7 @@
     ],
     "icon": "lliana.png",
     "sizeIcon": "bottle",
-    "photo": "1d.svg"
+    "photo": "lliana.jpg"
   },
   {
     "id": 4,
@@ -107,7 +107,7 @@
     ],
     "icon": "chornui-kmun.png",
     "sizeIcon": "bottle",
-    "photo": "1d1.svg"
+    "photo": "chornui-kmun.jpg"
   },
   {
     "id": 5,
@@ -133,7 +133,7 @@
     ],
     "icon": "harbyzova.png",
     "sizeIcon": "bottle",
-    "photo": "5.jpg"
+    "photo": "garbyzova.jpg"
   },
   {
     "id": 6,
@@ -161,7 +161,7 @@
     ],
     "icon": "voloskyi.png",
     "sizeIcon": "bottle",
-    "photo": "6.jpg"
+    "photo": "voloskui-gorih.jpg"
   },
   {
     "id": 7,
@@ -189,7 +189,7 @@
     ],
     "icon": "mugdalna.png",
     "sizeIcon": "bottle",
-    "photo": "7.jpg"
+    "photo": "mugdalna.jpg"
   },
   {
     "id": 8,
@@ -216,7 +216,7 @@
     ],
     "icon": "hirchuchna.png",
     "sizeIcon": "bottle",
-    "photo": "8.jpg"
+    "photo": "girchuchna.jpg"
   },
   {
     "id": 9,
@@ -245,7 +245,7 @@
     ],
     "icon": "kynzhytna.png",
     "sizeIcon": "bottle",
-    "photo": "9.jpg"
+    "photo": "kynzhytna.jpg"
   },
   {
     "id": 10,
@@ -272,7 +272,7 @@
     ],
     "icon": "kedrova.png",
     "sizeIcon": "bottle",
-    "photo": "10.jpg"
+    "photo": "kedrova.jpg"
   },
   {
     "id": 11,
@@ -300,7 +300,7 @@
     ],
     "icon": "funduk.png",
     "sizeIcon": "bottle",
-    "photo": "11.jpg"
+    "photo": "fyndyk.jpg"
   },
   {
     "id": 12,
@@ -327,7 +327,7 @@
     ],
     "icon": "fistashkova.png",
     "sizeIcon": "bottle",
-    "photo": "12.jpg"
+    "photo": "fistashkova.jpg"
   },
   {
     "id": 13,
@@ -354,7 +354,7 @@
     ],
     "icon": "chia.png",
     "sizeIcon": "bottle",
-    "photo": "13.jpg"
+    "photo": "chia.jpg"
   },
   {
     "id": 14,
@@ -386,7 +386,7 @@
     ],
     "icon": "keshju.png",
     "sizeIcon": "bottle",
-    "photo": "14.jpg"
+    "photo": "keshju.jpg"
   },
   {
     "id": 15,
@@ -414,7 +414,7 @@
     ],
     "icon": "soniashnukova.png",
     "sizeIcon": "bottle",
-    "photo": "15.jpg"
+    "photo": "soniashnukova.jpg"
   },
   {
     "id": 16,
@@ -442,7 +442,7 @@
     ],
     "icon": "ruzhieva.png",
     "sizeIcon": "bottle",
-    "photo": "16.jpg"
+    "photo": "ruzhieva.jpg"
   },
   {
     "id": 17,
@@ -471,7 +471,7 @@
     ],
     "icon": "roztoropsha.png",
     "sizeIcon": "bottle",
-    "photo": "1.jpg"
+    "photo": "roztoropsha.jpg"
   },
   {
     "id": 18,
@@ -498,7 +498,7 @@
     ],
     "icon": "makova.png",
     "sizeIcon": "bottle",
-    "photo": "1.jpg"
+    "photo": "makova.jpg"
   },
   {
     "id": 19,
@@ -525,6 +525,6 @@
     ],
     "icon": "konopliana.png",
     "sizeIcon": "bottle",
-    "photo": "1.jpg"
+    "photo": "konopliana.jpg"
   }
 ]

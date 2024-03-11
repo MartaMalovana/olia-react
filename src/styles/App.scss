@@ -1,0 +1,65 @@
+@import "./variables.module.scss";
+
+/* SUSPENSE LOADER */
+.loader {
+  display: "flex";
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.button_up {
+  position: fixed;
+  bottom: 100px;
+  right: 5px;
+  width: 35px;
+  height: 35px;
+  border: 1px solid transparent;
+  background: $color-background url("../icons//arrow-up.svg") no-repeat 50% 50%;
+  background-size: 25px 25px;
+  color: $color-background;
+  box-shadow: $shadow-1;
+}
+
+.main_container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 10px 0 0;
+
+  @media screen and (min-width: 1000px) {
+    margin: 0 auto 30px;
+    padding: 30px 0 20px;
+  }
+}
+
+.main_container_desktop {
+  @media screen and (min-width: 1000px) {
+    margin-top: 30px;
+  }
+}
+
+.main_page {
+  width: 100%;
+
+  @media screen and (min-width: 1000px) {
+    margin-left: 30px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .main_container {
+    display: flex;
+    max-width: 1200px;
+    border-bottom-left-radius: 40px;
+    box-shadow: $shadow-2;
+  }
+}

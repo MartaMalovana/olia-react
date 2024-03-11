@@ -1,7 +1,5 @@
 // COLORS
-// $color-background: #fff8dc;
 $color-background: #f2dbb7;
-// $color-background: #edc9af;
 $color-decor-1: #deb887;
 $color-decor-2: #cdaa7d;
 $color-decor-3: #ffffff;
@@ -11,7 +9,6 @@ $color-active-2: #cdef4c;
 $color-text-1: #7c4b0dc7;
 $color-gold: #ffcd50;
 $color-gold-light: #ffcd504a;
-// $color-olive: #b7cd7a;
 $color-olive: #cfc891;
 $color-grey: #aea5a5;
 
@@ -27,3 +24,8 @@ $max-container: 1190px;
 
 // ANIMATION
 $hover-1: transform 250ms cubic-bezier(0.36, 0.76, 0.86, 0.6);
+
+// BOX-SHADOW
+$shadow-1: rgba(0, 0, 0, 0.2) 0px 0px 3px 2px;
+$shadow-2: rgba(99, 99, 99, 0.2) -5px 8px 10px 0px;
+$shadow-3: rgba(99, 99, 99, 0.8) 0px 2px 8px 0px;

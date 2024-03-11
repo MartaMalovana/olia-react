@@ -1,44 +1,37 @@
 @import "../../styles/variables.module.scss";
+@import "../../styles/mixins.scss";
 
 .footer {
   margin-top: auto;
-  // background-color: $color-olive;
-  // border-top: 1px solid $color-grey;
 }
 
 .footer_container {
   position: relative;
-  display: flex;
-  // flex-direction: column;
-  // justify-content: center;
-  align-items: flex-end;
-  justify-content: space-between;
-  color: black;
-  padding: 15px 10px;
+  @include display(flex, space-between, flex-end);
   margin: 0 auto;
-  background-color: $color-background;
+  padding: 15px 10px;
   font-size: 16px;
+  color: black;
+  background-color: $color-background;
 
   @media screen and (min-width: $width-desktop) {
     max-width: $max-container;
-    font-size: 24px;
     margin: 0 auto 20px;
+    font-size: 24px;
   }
 }
 
 .footer_drop {
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%);
+  @include display(flex, center, center);
+  width: 40px;
+  height: 40px;
+  border: 1px solid $color-grey;
   border-radius: 50%;
   background-color: $color-background;
-  border: 1px solid $color-grey;
 
   &:hover {
     background-color: grey;
@@ -95,10 +88,10 @@
 
   &_icon {
     display: inline-block;
-    background-image: url("../../icons/viber.svg");
     width: 20px;
     height: 20px;
     margin-right: 5px;
+    background-image: url("../../icons/viber.svg");
     @media screen and (min-width: $width-desktop) {
       width: 30px;
       height: 30px;

@@ -1,15 +1,13 @@
 @import "../../styles/variables.module.scss";
+@import "../../styles/mixins.scss";
 
 .container {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  @include display(flex, flex-start, center);
   width: fit-content;
   margin: 20px 15px 10px;
   font-size: 12px;
   color: $color-text-1;
-
   @media screen and (min-width: $width-desktop) {
     margin: 0px 30px 0px 140px;
   }
@@ -17,24 +15,23 @@
   &::before {
     position: absolute;
     content: "";
-    width: 40px;
-    height: 40px;
     bottom: -5px;
     right: 5px;
     transform: rotate(10deg);
+    width: 40px;
+    height: 40px;
     background-image: url("../../icons/leaves.svg");
   }
 
   p {
-    text-align: start;
     margin: 10px 40px 10px 10px;
     font-family: $font-decor;
     font-size: 22px;
+    text-align: start;
     color: black;
-
     @media screen and (min-width: $width-desktop) {
-      font-size: 30px;
       margin: 10px 50px 10px 10px;
+      font-size: 30px;
     }
   }
 }

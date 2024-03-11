@@ -1,16 +1,15 @@
 @import "../../styles/variables.module.scss";
+@import "../../styles/mixins.scss";
 
 .container {
   position: relative;
-  //   top: 0;
-  //   left: 0;
   width: Calc(100% - 30px);
   height: fit-content;
-  background-color: $color-background;
-  border: 4px solid $color-gold;
-  border-radius: 30px;
   margin: 0 auto 20px;
   padding: 25px 10px 20px;
+  border: 4px solid $color-gold;
+  border-radius: 30px;
+  background-color: $color-background;
   @media screen and (min-width: $width-desktop) {
     margin: 0 0 20px 20px;
     padding: 10px;
@@ -21,11 +20,11 @@
   position: absolute;
   top: 15px;
   right: 15px;
-  border-radius: 10px;
   padding: 2px 10px;
-  box-shadow: rgba(99, 99, 99, 0.7) 0px 2px 8px 0px;
   border: 1px solid transparent;
+  border-radius: 10px;
   background-color: $color-background;
+  box-shadow: rgba(99, 99, 99, 0.7) 0px 2px 8px 0px;
 
   &:hover {
     background-color: $color-gold;
@@ -41,35 +40,29 @@
   }
 }
 
-// .form {
-// }
-
 fieldset {
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
   border-width: 1px;
   border-color: black;
   outline: none;
-  margin-bottom: 20px;
 }
 
 legend {
-  margin-bottom: 20px;
-  text-transform: uppercase;
   width: fit-content;
+  margin-bottom: 20px;
   font-size: 16px;
+  text-transform: uppercase;
   @media screen and (min-width: $width-desktop) {
     font-size: 20px;
   }
 }
 
 .label {
-  display: flex;
+  @include display(flex, center, flex-start);
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
   margin-bottom: 20px;
-
   @media screen and (min-width: $width-desktop) {
     flex-direction: row;
     align-items: center;
@@ -90,20 +83,20 @@ legend {
 .input {
   width: 100%;
   height: 38px;
-  border: 1px solid #dcdcdc;
   padding: 1px 5px;
-  font-family: "MyFont";
   font-size: 18px;
+  font-family: "MyFont";
+  border: 1px solid #dcdcdc;
   background-color: white;
 
   @media screen and (min-width: $width-desktop) {
-    font-size: 20px;
     width: 250px;
+    font-size: 20px;
   }
 
   &.input_city {
-    padding: 1px 2px;
     width: 100%;
+    padding: 1px 2px;
   }
 }
 
@@ -117,9 +110,8 @@ input:-internal-autofill:selected {
 
 .error_text {
   display: block;
-  color: red;
   font-size: 18px;
-
+  color: red;
   @media screen and (min-width: $width-desktop) {
     display: inline-block;
     margin-left: 20px;
@@ -128,16 +120,16 @@ input:-internal-autofill:selected {
 }
 
 .input_phone {
-  width: 100%;
   display: inline-flex;
+  width: 100%;
   @media screen and (min-width: $width-desktop) {
     width: 250px;
     font-size: 22px;
   }
 
   input {
-    font-size: 18px !important;
     width: 100%;
+    font-size: 18px !important;
   }
 }
 
@@ -169,15 +161,14 @@ input:-internal-autofill:selected {
   display: block;
   margin: 0 auto 10px;
   padding: 7px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
   border: 1px solid transparent;
   border-radius: 20px;
   color: black;
   background-color: $color-gold;
-  text-transform: uppercase;
-  font-weight: bold;
   box-shadow: rgba(99, 99, 99, 0.7) 0px 2px 8px 0px;
-  font-size: 14px;
-
   @media screen and (min-width: $width-desktop) {
     padding: 10px 30px;
     font-size: 16px;
@@ -185,15 +176,14 @@ input:-internal-autofill:selected {
 }
 
 .delivery {
-  margin: 5px 0 25px;
   display: flex;
   justify-content: space-between;
+  margin: 5px 0 25px;
   @media screen and (min-width: $width-desktop) {
     justify-content: flex-start;
   }
 
   label {
-    // margin-right: 10px;
     display: inline-flex;
     align-items: center;
     width: Calc((100% - 20px) / 3);
@@ -224,18 +214,18 @@ input:-internal-autofill:selected {
       position: absolute;
       width: 100%;
       height: 100%;
-      background-color: white;
       margin: 0;
+      background-color: white;
     }
 
     &::after {
       content: "";
       position: absolute;
       opacity: 0;
-      width: 140%;
-      height: 140%;
       bottom: 0;
       left: 0;
+      width: 140%;
+      height: 140%;
       background-image: url("../../icons/ok.svg");
       background-repeat: no-repeat;
       background-size: 100% 100%;
@@ -264,10 +254,10 @@ input:-internal-autofill:selected {
   &_input {
     width: 100%;
     height: 38px;
-    border: 1px solid #dcdcdc;
     padding: 1px 5px;
-    font-family: "MyFont";
     font-size: 18px;
+    font-family: "MyFont";
+    border: 1px solid #dcdcdc;
     background-color: white;
     @media screen and (min-width: $width-desktop) {
       font-size: 20px;
@@ -282,12 +272,12 @@ input:-internal-autofill:selected {
 
 .address {
   resize: none;
+  width: 100%;
   height: 100px;
-  border: 1px solid #dcdcdc;
+  padding: 2px 5px;
   font-size: 18px;
   font-family: "MyFont";
-  width: 100%;
-  padding: 2px 5px;
+  border: 1px solid #dcdcdc;
   @media screen and (min-width: $width-desktop) {
     font-size: 20px;
   }
@@ -301,14 +291,11 @@ input:-internal-autofill:selected {
   &_input {
     width: 100%;
     height: 38px;
-    border: 1px solid #dcdcdc;
     padding: 1px 5px;
     font-size: 16px;
+    border: 1px solid #dcdcdc;
     background-color: white;
   }
-
-  // &_error {
-  // }
 }
 
 .connect {
