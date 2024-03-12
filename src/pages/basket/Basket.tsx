@@ -137,6 +137,7 @@ export default function Basket({ changeBasketAmount, clearBasket }: Props) {
       {orderForm && (
         <ModalOrder
           products={basketData}
+          total={totalPrice()}
           close={() => setOrderForm(false)}
           showOrderButton={() => setOrderButton(!orderButton)}
           clearBasket={clearBasket}
@@ -158,7 +159,6 @@ export default function Basket({ changeBasketAmount, clearBasket }: Props) {
               alignItems: "center",
               width: "100%",
               height: "100vh",
-              // paddingTop: "100px",
             }}
             wrapperClass="loader"
             visible={true}

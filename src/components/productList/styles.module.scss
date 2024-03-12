@@ -150,8 +150,6 @@
   max-width: 130px;
   height: 150px;
   margin-right: 10px;
-  overflow: hidden;
-  border-radius: 0 20px 0 20px;
   @media screen and (max-width: 370px) {
     height: 100px;
   }
@@ -218,6 +216,7 @@
   height: 100%;
   min-height: 100px;
   object-fit: cover;
+  border-radius: 0 20px 0 20px;
   @media screen and (min-width: 500px) {
     min-height: 100%;
   }

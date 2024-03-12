@@ -19,6 +19,7 @@ import newOrderDataFormatter from "../../utils/newOrderDataFormatter";
 
 type Props = {
   products: Item[];
+  total: number;
   close: () => void;
   showOrderButton: () => void;
   clearBasket: () => void;
@@ -27,6 +28,7 @@ type Props = {
 
 export default function ModalOrder({
   products,
+  total,
   close,
   showOrderButton,
   clearBasket,
@@ -102,6 +104,7 @@ export default function ModalOrder({
         comment: values.comment ? values.comment : "no comment",
         connect: values.connect,
         basket: newOrderDataFormatter(products),
+        totalPrice: total,
       };
       loader(true);
       const result: any = apiNewOrder(newData);
