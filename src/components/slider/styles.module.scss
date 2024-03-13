@@ -1,8 +1,15 @@
+@import "../../styles/variables.module.scss";
+
 .slider_container {
   position: relative;
   width: 100%;
   height: auto;
   margin: 0 0 20px 0;
+  @media screen and (min-width: $width-desktop) {
+    width: 878px;
+    height: 351px;
+    background-color: $color-olive;
+  }
 }
 
 .slider_item {

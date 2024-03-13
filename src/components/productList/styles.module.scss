@@ -162,6 +162,7 @@
 }
 
 .img_container_olia {
+  @extend .img_container;
   height: 210px;
 }
 
