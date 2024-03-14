@@ -94,6 +94,9 @@ export default function ModalOrder({
       connect: Yup.array().of(Yup.string()),
     }),
     onSubmit: async (values) => {
+      console.log("submit");
+      console.log(total);
+
       let newData = {
         name: values.firstName,
         lastName: values.lastName,
