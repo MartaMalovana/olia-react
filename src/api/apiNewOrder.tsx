@@ -8,7 +8,8 @@ export default function apiNewOrder(data: any) {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Origin":
+              "https://65f35a2f75287b00080a1cc6--tubular-malasada-acad20.netlify.app",
           },
           body: JSON.stringify(data),
         }
